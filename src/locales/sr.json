@@ -1,0 +1,20 @@
+{
+  "common": {
+    "save": "Sačuvaj",
+    "cancel": "Otkaži",
+    "delete": "Obriši",
+    "edit": "Izmeni",
+    "loading": "Učitavanje...",
+    "error": "Greška",
+    "success": "Uspeh"
+  },
+  "navigation": {
+    "home": "Početna",
+    "settings": "Podešavanja",
+    "profile": "Profil",
+    "logout": "Odjava"
+  },
+  "app": {
+    "title": "Aplikacija"
+  }
+}

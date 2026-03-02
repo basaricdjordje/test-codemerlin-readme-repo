@@ -1,0 +1,50 @@
+import { describe, it, expect } from 'vitest'
+import en from './locales/en.json'
+import sr from './locales/sr.json'
+
+const translationKeys = ['common.save', 'common.cancel', 'common.delete', 'common.edit', 'common.loading', 'common.error', 'common.success', 'navigation.home', 'navigation.settings', 'navigation.profile', 'navigation.logout', 'app.title']
+
+function getNestedKeys(obj: Record<string, unknown>, prefix = ''): string[] {
+  const keys: string[] = []
+  for (const [key, value] of Object.entries(obj)) {
+    const fullKey = prefix ? `${prefix}.${key}` : key
+    if (value && typeof value === 'object' && !Array.isArray(value)) {
+      keys.push(...getNestedKeys(value as Record<string, unknown>, fullKey))
+    } else {
+      keys.push(fullKey)
+    }
+  }
+  return keys
+}
+
+describe('Translation keys', () => {
+  it('Serbian translations contain all main UI keys', () => {
+    const srKeys = getNestedKeys(sr as Record<string, unknown>)
+    for (const key of translationKeys) {
+      const parts = key.split('.')
+      let obj: Record<string, unknown> = sr as Record<string, unknown>
+      for (const part of parts) {
+        expect(obj).toHaveProperty(part)
+        obj = obj[part] as Record<string, unknown>
+      }
+    }
+  })
+
+  it('English translations contain all main UI keys', () => {
+    const enKeys = getNestedKeys(en as Record<string, unknown>)
+    for (const key of translationKeys) {
+      const parts = key.split('.')
+      let obj: Record<string, unknown> = en as Record<string, unknown>
+      for (const part of parts) {
+        expect(obj).toHaveProperty(part)
+        obj = obj[part] as Record<string, unknown>
+      }
+    }
+  })
+
+  it('Serbian and English have same structure', () => {
+    const enKeys = getNestedKeys(en as Record<string, unknown>).sort()
+    const srKeys = getNestedKeys(sr as Record<string, unknown>).sort()
+    expect(srKeys).toEqual(enKeys)
+  })
+})
