@@ -13,6 +13,9 @@ function App() {
     <>
       <main id="main-content" tabIndex={-1}>
       <div className="language-selector">
+        <span className="help-hint" title={t('app.accessibilityInfo')} aria-label={t('app.accessibilityInfo')}>
+          {t('app.help')} (?)
+        </span>
         <label htmlFor="lang">{t('app.language')}:</label>
         <select
           id="lang"

@@ -27,6 +27,8 @@
   },
   "app": {
     "title": "Application",
+    "help": "Help",
+    "accessibilityInfo": "Press Tab to skip to main content",
     "language": "Language",
     "welcome": "Welcome to the application",
     "countIs": "count is {{count}}",

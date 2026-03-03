@@ -4,6 +4,13 @@
   right: 1rem;
 }
 
+.help-hint {
+  margin-right: 1rem;
+  font-size: 0.875rem;
+  color: #888;
+  cursor: help;
+}
+
 .language-selector label {
   margin-right: 0.5rem;
 }

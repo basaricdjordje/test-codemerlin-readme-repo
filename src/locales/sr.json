@@ -27,6 +27,8 @@
   },
   "app": {
     "title": "Aplikacija",
+    "help": "Pomoć",
+    "accessibilityInfo": "Pritisnite Tab za preskok na glavni sadržaj",
     "language": "Jezik",
     "welcome": "Dobrodošli u aplikaciju",
     "countIs": "brojač je {{count}}",
