@@ -1,0 +1,26 @@
+{
+  "common": {
+    "save": "Sačuvaj",
+    "cancel": "Otkaži",
+    "delete": "Obriši",
+    "edit": "Izmeni",
+    "loading": "Učitavanje...",
+    "error": "Greška",
+    "success": "Uspeh",
+    "required": "Ovo polje je obavezno",
+    "search": "Pretraga"
+  },
+  "navigation": {
+    "home": "Početna",
+    "settings": "Podešavanja",
+    "profile": "Profil",
+    "logout": "Odjava"
+  },
+  "app": {
+    "title": "Aplikacija",
+    "language": "Jezik",
+    "welcome": "Dobrodošli u aplikaciju",
+    "countIs": "brojač je {{count}}",
+    "footer": "© 2025 Aplikacija"
+  }
+}
