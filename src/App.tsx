@@ -11,6 +11,7 @@ function App() {
 
   return (
     <>
+      <main id="main-content" tabIndex={-1}>
       <div className="language-selector">
         <label htmlFor="lang">{t('app.language')}:</label>
         <select
@@ -59,6 +60,7 @@ function App() {
         {t('common.loading')}
       </p>
       <ContactForm />
+      </main>
       <footer className="app-footer">{t('app.footer')}</footer>
     </>
   )
