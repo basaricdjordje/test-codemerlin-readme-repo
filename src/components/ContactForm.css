@@ -6,7 +6,9 @@
   border-radius: 8px;
   background: rgba(100, 108, 255, 0.05);
 }
-
+.html{
+ display:block;
+}
 .contact-form-section h2 {
   margin-top: 0;
   margin-bottom: 1rem;
