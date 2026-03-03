@@ -64,7 +64,9 @@ function App() {
       </p>
       <ContactForm />
       </main>
-      <footer className="app-footer">{t('app.footer')}</footer>
+      <footer className="app-footer">
+        {t('app.footer')} · {t('app.version', { version: '0.1.0' })}
+      </footer>
     </>
   )
 }

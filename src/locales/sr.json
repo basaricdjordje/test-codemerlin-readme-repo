@@ -32,6 +32,7 @@
     "language": "Jezik",
     "welcome": "Dobrodošli u aplikaciju",
     "countIs": "brojač je {{count}}",
-    "footer": "© 2025 Aplikacija"
+    "footer": "© 2025 Aplikacija",
+    "version": "Verzija {{version}}"
   }
 }
