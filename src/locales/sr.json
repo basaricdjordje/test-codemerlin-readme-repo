@@ -6,7 +6,9 @@
     "edit": "Izmeni",
     "loading": "Učitavanje...",
     "error": "Greška",
-    "success": "Uspeh"
+    "success": "Uspeh",
+    "required": "Ovo polje je obavezno",
+    "search": "Pretraga"
   },
   "navigation": {
     "home": "Početna",

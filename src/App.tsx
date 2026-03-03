@@ -31,6 +31,14 @@ function App() {
         </a>
       </div>
       <h1>{t('app.title')}</h1>
+      <p className="welcome-message">{t('app.welcome')}</p>
+      <div className="search-bar">
+        <input
+          type="search"
+          placeholder={t('common.search')}
+          aria-label={t('common.search')}
+        />
+      </div>
       <nav>
         <a href="#home">{t('navigation.home')}</a>
         <a href="#settings">{t('navigation.settings')}</a>

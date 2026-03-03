@@ -51,3 +51,15 @@
 .read-the-docs {
   color: #888;
 }
+
+.welcome-message {
+  color: #646cff;
+  margin-bottom: 1rem;
+}
+
+.search-bar input {
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  border: 1px solid #646cff;
+  min-width: 200px;
+}

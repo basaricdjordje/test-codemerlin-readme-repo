@@ -6,7 +6,9 @@
     "edit": "Edit",
     "loading": "Loading...",
     "error": "Error",
-    "success": "Success"
+    "success": "Success",
+    "required": "This field is required",
+    "search": "Search"
   },
   "navigation": {
     "home": "Home",
