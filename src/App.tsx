@@ -5,11 +5,23 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const [count, setCount] = useState(0)
 
   return (
     <>
+      <div className="language-selector">
+        <label htmlFor="lang">{t('app.language')}:</label>
+        <select
+          id="lang"
+          value={i18n.language}
+          onChange={(e) => i18n.changeLanguage(e.target.value)}
+          aria-label={t('app.language')}
+        >
+          <option value="en">English</option>
+          <option value="sr">Srpski</option>
+        </select>
+      </div>
       <div>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />

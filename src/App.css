@@ -1,4 +1,15 @@
+.language-selector {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.language-selector label {
+  margin-right: 0.5rem;
+}
+
 #root {
+  position: relative;
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;

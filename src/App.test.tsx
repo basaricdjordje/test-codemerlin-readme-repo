@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { render, screen } from '@testing-library/react'
+import { render, screen, fireEvent } from '@testing-library/react'
 import { I18nextProvider } from 'react-i18next'
 import i18n from './i18n'
 import App from './App'
@@ -12,6 +12,7 @@ describe('App translations', () => {
         <App />
       </I18nextProvider>
     )
+    expect(screen.getByText(/Jezik/)).toBeInTheDocument()
     expect(screen.getByText('Aplikacija')).toBeInTheDocument()
     expect(screen.getByText('Početna')).toBeInTheDocument()
     expect(screen.getByText('Podešavanja')).toBeInTheDocument()
@@ -29,6 +30,7 @@ describe('App translations', () => {
         <App />
       </I18nextProvider>
     )
+    expect(screen.getByText(/Language/)).toBeInTheDocument()
     expect(screen.getByText('Application')).toBeInTheDocument()
     expect(screen.getByText('Home')).toBeInTheDocument()
     expect(screen.getByText('Settings')).toBeInTheDocument()
@@ -46,6 +48,20 @@ describe('App translations', () => {
         <App />
       </I18nextProvider>
     )
+    expect(screen.getByText('Aplikacija')).toBeInTheDocument()
+  })
+
+  it('language selector switches between en and sr', async () => {
+    await i18n.changeLanguage('en')
+    render(
+      <I18nextProvider i18n={i18n}>
+        <App />
+      </I18nextProvider>
+    )
+    const select = screen.getByRole('combobox', { name: /language/i })
+    expect(select).toHaveValue('en')
+    fireEvent.change(select, { target: { value: 'sr' } })
+    await screen.findByText(/Jezik/)
     expect(screen.getByText('Aplikacija')).toBeInTheDocument()
   })
 })

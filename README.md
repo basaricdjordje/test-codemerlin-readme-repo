@@ -59,7 +59,9 @@ The app uses **react-i18next** with **Serbian (sr)** as the fallback language. W
 
 - `common.*` – shared actions (save, cancel, delete, edit, loading, error, success)
 - `navigation.*` – nav items (home, settings, profile, logout)
-- `app.*` – app-level labels (title)
+- `app.*` – app-level labels (title, language, welcome)
+
+A **language selector** in the header lets users switch between English and Serbian.
 
 ## Scripts
 
