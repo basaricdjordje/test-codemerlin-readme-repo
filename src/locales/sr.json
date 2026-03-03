@@ -10,6 +10,15 @@
     "required": "Ovo polje je obavezno",
     "search": "Pretraga"
   },
+  "form": {
+    "title": "Kontakt formular",
+    "name": "Ime",
+    "email": "Email",
+    "namePlaceholder": "Unesite vaše ime",
+    "emailPlaceholder": "Unesite vaš email",
+    "submitSuccess": "Formular je uspešno poslat",
+    "deleteConfirm": "Da li ste sigurni da želite da obrišete?"
+  },
   "navigation": {
     "home": "Početna",
     "settings": "Podešavanja",

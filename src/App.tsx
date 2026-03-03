@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
+import { ContactForm } from './components/ContactForm'
 import './App.css'
 
 function App() {
@@ -57,6 +58,7 @@ function App() {
       <p className="read-the-docs">
         {t('common.loading')}
       </p>
+      <ContactForm />
       <footer className="app-footer">{t('app.footer')}</footer>
     </>
   )

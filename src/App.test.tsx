@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { render, screen, fireEvent } from '@testing-library/react'
+import { render, screen, fireEvent, within } from '@testing-library/react'
 import { I18nextProvider } from 'react-i18next'
 import i18n from './i18n'
 import App from './App'
@@ -18,12 +18,13 @@ describe('App translations', () => {
     expect(screen.getByText('Podešavanja')).toBeInTheDocument()
     expect(screen.getByText('Profil')).toBeInTheDocument()
     expect(screen.getByText('Odjava')).toBeInTheDocument()
-    expect(screen.getByText('Sačuvaj')).toBeInTheDocument()
-    expect(screen.getByText('Otkaži')).toBeInTheDocument()
+    expect(screen.getAllByText('Sačuvaj').length).toBeGreaterThan(0)
+    expect(screen.getAllByText('Otkaži').length).toBeGreaterThan(0)
     expect(screen.getByText('Učitavanje...')).toBeInTheDocument()
     expect(screen.getByText('Dobrodošli u aplikaciju')).toBeInTheDocument()
     expect(screen.getByPlaceholderText('Pretraga')).toBeInTheDocument()
     expect(screen.getByText('© 2025 Aplikacija')).toBeInTheDocument()
+    expect(screen.getByText('Kontakt formular')).toBeInTheDocument()
   })
 
   it('renders English when language is en', async () => {
@@ -39,12 +40,13 @@ describe('App translations', () => {
     expect(screen.getByText('Settings')).toBeInTheDocument()
     expect(screen.getByText('Profile')).toBeInTheDocument()
     expect(screen.getByText('Log out')).toBeInTheDocument()
-    expect(screen.getByText('Save')).toBeInTheDocument()
-    expect(screen.getByText('Cancel')).toBeInTheDocument()
+    expect(screen.getAllByText('Save').length).toBeGreaterThan(0)
+    expect(screen.getAllByText('Cancel').length).toBeGreaterThan(0)
     expect(screen.getByText('Loading...')).toBeInTheDocument()
     expect(screen.getByText('Welcome to the application')).toBeInTheDocument()
     expect(screen.getByPlaceholderText('Search')).toBeInTheDocument()
     expect(screen.getByText('© 2025 Application')).toBeInTheDocument()
+    expect(screen.getByText('Contact Form')).toBeInTheDocument()
   })
 
   it('falls back to Serbian when translation key is missing in current language', async () => {
@@ -69,5 +71,18 @@ describe('App translations', () => {
     fireEvent.change(select, { target: { value: 'sr' } })
     await screen.findByText(/Jezik/)
     expect(screen.getByText('Aplikacija')).toBeInTheDocument()
+  })
+
+  it('ContactForm shows validation error for empty required fields', async () => {
+    await i18n.changeLanguage('en')
+    render(
+      <I18nextProvider i18n={i18n}>
+        <App />
+      </I18nextProvider>
+    )
+    const form = screen.getByTestId('contact-form')
+    const saveButton = within(form).getByRole('button', { name: 'Save' })
+    fireEvent.click(saveButton)
+    expect(screen.getAllByText('This field is required').length).toBeGreaterThan(0)
   })
 })

@@ -58,6 +58,7 @@ The app uses **react-i18next** with **Serbian (sr)** as the fallback language. W
 ### Translation Key Structure
 
 - `common.*` – shared actions (save, cancel, delete, edit, loading, error, success, required, search)
+- `form.*` – contact form (title, name, email, placeholders, submitSuccess, deleteConfirm)
 - `navigation.*` – nav items (home, settings, profile, logout)
 - `app.*` – app-level labels (title, language, welcome, countIs with `{{count}}` interpolation, footer)
 
