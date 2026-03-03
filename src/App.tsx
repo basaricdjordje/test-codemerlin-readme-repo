@@ -47,7 +47,7 @@ function App() {
       </nav>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+          {t('app.countIs', { count })}
         </button>
         <p>
           <button type="button">{t('common.save')}</button>
@@ -57,6 +57,7 @@ function App() {
       <p className="read-the-docs">
         {t('common.loading')}
       </p>
+      <footer className="app-footer">{t('app.footer')}</footer>
     </>
   )
 }

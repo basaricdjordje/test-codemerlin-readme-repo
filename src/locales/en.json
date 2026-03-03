@@ -19,6 +19,8 @@
   "app": {
     "title": "Application",
     "language": "Language",
-    "welcome": "Welcome to the application"
+    "welcome": "Welcome to the application",
+    "countIs": "count is {{count}}",
+    "footer": "© 2025 Application"
   }
 }

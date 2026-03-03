@@ -63,3 +63,11 @@
   border: 1px solid #646cff;
   min-width: 200px;
 }
+
+.app-footer {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #333;
+  color: #888;
+  font-size: 0.875rem;
+}

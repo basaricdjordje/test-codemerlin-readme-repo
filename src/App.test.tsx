@@ -23,6 +23,7 @@ describe('App translations', () => {
     expect(screen.getByText('Učitavanje...')).toBeInTheDocument()
     expect(screen.getByText('Dobrodošli u aplikaciju')).toBeInTheDocument()
     expect(screen.getByPlaceholderText('Pretraga')).toBeInTheDocument()
+    expect(screen.getByText('© 2025 Aplikacija')).toBeInTheDocument()
   })
 
   it('renders English when language is en', async () => {
@@ -43,6 +44,7 @@ describe('App translations', () => {
     expect(screen.getByText('Loading...')).toBeInTheDocument()
     expect(screen.getByText('Welcome to the application')).toBeInTheDocument()
     expect(screen.getByPlaceholderText('Search')).toBeInTheDocument()
+    expect(screen.getByText('© 2025 Application')).toBeInTheDocument()
   })
 
   it('falls back to Serbian when translation key is missing in current language', async () => {

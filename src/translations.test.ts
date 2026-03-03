@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest'
 import en from './locales/en.json'
 import sr from './locales/sr.json'
 
-const translationKeys = ['common.save', 'common.cancel', 'common.delete', 'common.edit', 'common.loading', 'common.error', 'common.success', 'common.required', 'common.search', 'navigation.home', 'navigation.settings', 'navigation.profile', 'navigation.logout', 'app.title', 'app.language', 'app.welcome']
+const translationKeys = ['common.save', 'common.cancel', 'common.delete', 'common.edit', 'common.loading', 'common.error', 'common.success', 'common.required', 'common.search', 'navigation.home', 'navigation.settings', 'navigation.profile', 'navigation.logout', 'app.title', 'app.language', 'app.welcome', 'app.countIs', 'app.footer']
 
 function getNestedKeys(obj: Record<string, unknown>, prefix = ''): string[] {
   const keys: string[] = []
