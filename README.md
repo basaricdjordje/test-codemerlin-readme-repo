@@ -57,11 +57,11 @@ The app uses **react-i18next** with **Serbian (sr)** as the fallback language. W
 
 ### Translation Key Structure
 
-- `common.*` – shared actions (save, cancel, delete, edit, loading, error, success)
+- `common.*` – shared actions (save, cancel, delete, edit, loading, error, success, required, search)
 - `navigation.*` – nav items (home, settings, profile, logout)
-- `app.*` – app-level labels (title, language, welcome)
+- `app.*` – app-level labels (title, language, welcome, countIs with `{{count}}` interpolation, footer)
 
-A **language selector** in the header lets users switch between English and Serbian.
+A **language selector** in the header lets users switch between English and Serbian. The count button and footer use interpolated translations.
 
 ## Scripts
 
