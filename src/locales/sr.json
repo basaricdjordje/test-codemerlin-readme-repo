@@ -1,0 +1,41 @@
+{
+  "common": {
+    "save": "Sačuvaj",
+    "cancel": "Otkaži",
+    "delete": "Obriši",
+    "edit": "Izmeni",
+    "loading": "Učitavanje...",
+    "error": "Greška",
+    "success": "Uspeh",
+    "required": "Ovo polje je obavezno",
+    "search": "Pretraga"
+  },
+  "form": {
+    "title": "Kontakt formular",
+    "name": "Ime",
+    "email": "Email",
+    "namePlaceholder": "Unesite vaše ime",
+    "emailPlaceholder": "Unesite vaš email",
+    "submitSuccess": "Formular je uspešno poslat",
+    "deleteConfirm": "Da li ste sigurni da želite da obrišete?"
+  },
+  "navigation": {
+    "home": "Početna",
+    "settings": "Podešavanja",
+    "profile": "Profil",
+    "logout": "Odjava"
+  },
+  "app": {
+    "title": "Aplikacija",
+    "help": "Pomoć",
+    "accessibilityInfo": "Pritisnite Tab za preskok na glavni sadržaj",
+    "language": "Jezik",
+    "welcome": "Dobrodošli u aplikaciju",
+    "countIs": "brojač je {{count}}",
+    "footer": "© 2025 Aplikacija",
+    "version": "Verzija {{version}}",
+    "loadingLanguage": "Učitavanje jezika...",
+    "loadError": "Nije moguće učitati prevode. Prelazak na engleski.",
+    "backToTop": "Nazad na vrh"
+  }
+}

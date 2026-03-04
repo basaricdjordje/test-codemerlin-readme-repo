@@ -1,0 +1,41 @@
+{
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "required": "This field is required",
+    "search": "Search"
+  },
+  "form": {
+    "title": "Contact Form",
+    "name": "Name",
+    "email": "Email",
+    "namePlaceholder": "Enter your name",
+    "emailPlaceholder": "Enter your email",
+    "submitSuccess": "Form submitted successfully",
+    "deleteConfirm": "Are you sure you want to delete this?"
+  },
+  "navigation": {
+    "home": "Home",
+    "settings": "Settings",
+    "profile": "Profile",
+    "logout": "Log out"
+  },
+  "app": {
+    "title": "Application",
+    "help": "Help",
+    "accessibilityInfo": "Press Tab to skip to main content",
+    "language": "Language",
+    "welcome": "Welcome to the application",
+    "countIs": "count is {{count}}",
+    "footer": "© 2025 Application",
+    "version": "Version {{version}}",
+    "loadingLanguage": "Loading language...",
+    "loadError": "Failed to load translations. Falling back to English.",
+    "backToTop": "Back to top"
+  }
+}

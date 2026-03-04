@@ -1,0 +1,14 @@
+.language-loading {
+  margin-right: 0.75rem;
+  font-size: 0.875rem;
+  color: #646cff;
+}
+
+.language-error {
+  margin-right: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.8rem;
+  color: #ff6b6b;
+  background: rgba(255, 107, 107, 0.15);
+  border-radius: 4px;
+}
