@@ -1,6 +1,7 @@
 {
   "name": "test-codemerlin-readme-repo",
   "description": "React app with i18n and Serbian fallback",
+  "keywords": ["react", "i18n", "lazy-load", "serbian"],
   "private": true,
   "version": "0.1.0",
   "type": "module",
