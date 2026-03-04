@@ -1,11 +1,28 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import './LanguageSelector.css'
+
+const THEME_KEY = 'app-theme'
+
+function getInitialTheme(): 'light' | 'dark' {
+  if (typeof window === 'undefined') return 'dark'
+  const saved = localStorage.getItem(THEME_KEY) as 'light' | 'dark' | null
+  if (saved) return saved
+  return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'
+}
 
 export function LanguageSelector() {
   const { t, i18n } = useTranslation()
   const [isLoading, setIsLoading] = useState(false)
   const [loadError, setLoadError] = useState<string | null>(null)
+  const [theme, setTheme] = useState<'light' | 'dark'>(getInitialTheme)
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme
+    localStorage.setItem(THEME_KEY, theme)
+  }, [theme])
+
+  const toggleTheme = () => setTheme((prev) => (prev === 'light' ? 'dark' : 'light'))
 
   const handleChange = async (lng: string) => {
     if (lng === i18n.language) return
@@ -48,6 +65,15 @@ export function LanguageSelector() {
         <option value="en">English</option>
         <option value="sr">Srpski</option>
       </select>
+      <button
+        type="button"
+        className="theme-toggle"
+        onClick={toggleTheme}
+        aria-label={theme === 'dark' ? t('app.lightMode') : t('app.darkMode')}
+        title={theme === 'dark' ? t('app.lightMode') : t('app.darkMode')}
+      >
+        {theme === 'dark' ? t('app.lightMode') : t('app.darkMode')}
+      </button>
     </div>
   )
 }

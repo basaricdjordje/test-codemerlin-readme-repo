@@ -36,6 +36,8 @@
     "version": "Verzija {{version}}",
     "loadingLanguage": "Učitavanje jezika...",
     "loadError": "Nije moguće učitati prevode. Prelazak na engleski.",
-    "backToTop": "Nazad na vrh"
+    "backToTop": "Nazad na vrh",
+    "darkMode": "Tamni režim",
+    "lightMode": "Svetli režim"
   }
 }

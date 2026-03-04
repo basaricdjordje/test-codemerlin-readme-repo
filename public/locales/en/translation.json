@@ -36,6 +36,8 @@
     "version": "Version {{version}}",
     "loadingLanguage": "Loading language...",
     "loadError": "Failed to load translations. Falling back to English.",
-    "backToTop": "Back to top"
+    "backToTop": "Back to top",
+    "darkMode": "Dark mode",
+    "lightMode": "Light mode"
   }
 }
