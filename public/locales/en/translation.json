@@ -39,5 +39,11 @@
     "backToTop": "Back to top",
     "darkMode": "Dark mode",
     "lightMode": "Light mode"
+  },
+  "error": {
+    "title": "Something went wrong",
+    "message": "An unexpected error occurred. You can try again or go back to the start.",
+    "tryAgain": "Try again",
+    "goHome": "Go to home"
   }
 }

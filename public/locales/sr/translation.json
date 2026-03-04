@@ -39,5 +39,11 @@
     "backToTop": "Nazad na vrh",
     "darkMode": "Tamni režim",
     "lightMode": "Svetli režim"
+  },
+  "error": {
+    "title": "Nešto nije u redu",
+    "message": "Došlo je do neočekivane greške. Možete pokušati ponovo ili se vratiti na početak.",
+    "tryAgain": "Pokušaj ponovo",
+    "goHome": "Na početnu"
   }
 }
