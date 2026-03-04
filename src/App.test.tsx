@@ -66,10 +66,39 @@ describe('App translations', () => {
         <App />
       </I18nextProvider>
     )
-    const select = screen.getByRole('combobox', { name: /language/i })
+    const select = screen.getAllByRole('combobox', { name: /language/i })[0]
     expect(select).toHaveValue('en')
     fireEvent.change(select, { target: { value: 'sr' } })
     await screen.findByText(/Jezik/)
+    expect(screen.getByText('Aplikacija')).toBeInTheDocument()
+  })
+
+  it('LanguageSelector switches to sr with lazy-loaded translations', async () => {
+    await i18n.changeLanguage('en')
+    render(
+      <I18nextProvider i18n={i18n}>
+        <App />
+      </I18nextProvider>
+    )
+    const select = screen.getAllByRole('combobox', { name: /language/i })[0]
+    fireEvent.change(select, { target: { value: 'sr' } })
+    await screen.findByText(/Jezik/)
+    expect(screen.getByText('Aplikacija')).toBeInTheDocument()
+  })
+
+  it('subsequent switch to sr is fast (cached)', async () => {
+    await i18n.changeLanguage('en')
+    render(
+      <I18nextProvider i18n={i18n}>
+        <App />
+      </I18nextProvider>
+    )
+    const select = screen.getAllByRole('combobox', { name: /language/i })[0]
+    fireEvent.change(select, { target: { value: 'sr' } })
+    await screen.findByText('Aplikacija')
+    fireEvent.change(select, { target: { value: 'en' } })
+    await screen.findByText('Application')
+    fireEvent.change(select, { target: { value: 'sr' } })
     expect(screen.getByText('Aplikacija')).toBeInTheDocument()
   })
 

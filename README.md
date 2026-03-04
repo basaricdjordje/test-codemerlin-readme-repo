@@ -8,6 +8,8 @@ React + TypeScript + Vite application with internationalization (i18n) via react
 
 The app uses **react-i18next** with **Serbian (sr)** as the fallback language. When a translation is missing for the selected language, Serbian messages are shown.
 
+**Lazy loading:** English (en) is bundled at startup. Serbian (sr) is loaded on demand when the user switches languages, reducing initial bundle size. Loaded translations are cached for fast subsequent switches.
+
 ### Supported Languages
 
 - **English (en)** – primary

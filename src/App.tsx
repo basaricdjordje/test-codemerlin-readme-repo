@@ -3,30 +3,17 @@ import { useTranslation } from 'react-i18next'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import { ContactForm } from './components/ContactForm'
+import { LanguageSelector } from './components/LanguageSelector'
 import './App.css'
 
 function App() {
-  const { t, i18n } = useTranslation()
+  const { t } = useTranslation()
   const [count, setCount] = useState(0)
 
   return (
     <>
       <main id="main-content" tabIndex={-1}>
-      <div className="language-selector">
-        <span className="help-hint" title={t('app.accessibilityInfo')} aria-label={t('app.accessibilityInfo')}>
-          {t('app.help')} (?)
-        </span>
-        <label htmlFor="lang">{t('app.language')}:</label>
-        <select
-          id="lang"
-          value={i18n.language}
-          onChange={(e) => i18n.changeLanguage(e.target.value)}
-          aria-label={t('app.language')}
-        >
-          <option value="en">English</option>
-          <option value="sr">Srpski</option>
-        </select>
-      </div>
+      <LanguageSelector />
       <div>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
