@@ -28,6 +28,23 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+:root[data-theme="light"] {
+  color: #213547;
+  background-color: #ffffff;
+}
+:root[data-theme="light"] button {
+  background-color: #f9f9f9;
+  color: #213547;
+}
+:root[data-theme="dark"] {
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+}
+:root[data-theme="dark"] button {
+  background-color: #1a1a1a;
+  color: rgba(255, 255, 255, 0.87);
+}
+
 a {
   font-weight: 500;
   color: #646cff;

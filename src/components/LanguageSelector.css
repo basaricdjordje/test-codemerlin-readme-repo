@@ -12,3 +12,9 @@
   background: rgba(255, 107, 107, 0.15);
   border-radius: 4px;
 }
+
+.theme-toggle {
+  margin-left: 0.75rem;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.875rem;
+}
