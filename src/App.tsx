@@ -51,6 +51,7 @@ function App() {
       </p>
       <ContactForm />
       </main>
+      <a href="#main-content" className="back-to-top">{t('app.backToTop')}</a>
       <footer className="app-footer">
         {t('app.footer')} · {t('app.version', { version: '0.1.0' })}
       </footer>

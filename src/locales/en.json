@@ -35,6 +35,7 @@
     "footer": "© 2025 Application",
     "version": "Version {{version}}",
     "loadingLanguage": "Loading language...",
-    "loadError": "Failed to load translations. Falling back to English."
+    "loadError": "Failed to load translations. Falling back to English.",
+    "backToTop": "Back to top"
   }
 }

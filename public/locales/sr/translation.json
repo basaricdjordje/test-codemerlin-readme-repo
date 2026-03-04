@@ -35,6 +35,7 @@
     "footer": "© 2025 Aplikacija",
     "version": "Verzija {{version}}",
     "loadingLanguage": "Učitavanje jezika...",
-    "loadError": "Nije moguće učitati prevode. Prelazak na engleski."
+    "loadError": "Nije moguće učitati prevode. Prelazak na engleski.",
+    "backToTop": "Nazad na vrh"
   }
 }
