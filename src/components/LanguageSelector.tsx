@@ -1,28 +1,13 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useTheme } from '../contexts/ThemeContext'
 import './LanguageSelector.css'
-
-const THEME_KEY = 'app-theme'
-
-function getInitialTheme(): 'light' | 'dark' {
-  if (typeof window === 'undefined') return 'dark'
-  const saved = localStorage.getItem(THEME_KEY) as 'light' | 'dark' | null
-  if (saved) return saved
-  return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'
-}
 
 export function LanguageSelector() {
   const { t, i18n } = useTranslation()
+  const { theme, toggleTheme } = useTheme()
   const [isLoading, setIsLoading] = useState(false)
   const [loadError, setLoadError] = useState<string | null>(null)
-  const [theme, setTheme] = useState<'light' | 'dark'>(getInitialTheme)
-
-  useEffect(() => {
-    document.documentElement.dataset.theme = theme
-    localStorage.setItem(THEME_KEY, theme)
-  }, [theme])
-
-  const toggleTheme = () => setTheme((prev) => (prev === 'light' ? 'dark' : 'light'))
 
   const handleChange = async (lng: string) => {
     if (lng === i18n.language) return

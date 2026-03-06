@@ -1,0 +1,27 @@
+.settings-page {
+  padding: 1.5rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.settings-page h2 {
+  font-size: 1.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.settings-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.settings-section h3 {
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.settings-page .theme-toggle {
+  padding: 0.5rem 1rem;
+}
