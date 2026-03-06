@@ -40,6 +40,10 @@
     "darkMode": "Dark mode",
     "lightMode": "Light mode"
   },
+  "settings": {
+    "title": "Settings",
+    "theme": "Theme"
+  },
   "error": {
     "title": "Something went wrong",
     "message": "An unexpected error occurred. You can try again or go back to the start.",

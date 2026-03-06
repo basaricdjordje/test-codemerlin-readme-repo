@@ -40,6 +40,14 @@
     "darkMode": "Tamni režim",
     "lightMode": "Svetli režim"
   },
+  "settings": {
+    "title": "Podešavanja",
+    "theme": "Tema"
+  },
+  "settings": {
+    "title": "Podešavanja",
+    "theme": "Tema"
+  },
   "error": {
     "title": "Nešto nije u redu",
     "message": "Došlo je do neočekivane greške. Možete pokušati ponovo ili se vratiti na početak.",
