@@ -1,0 +1,35 @@
+.error-page {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  text-align: center;
+}
+
+.error-page__title {
+  font-size: 1.75rem;
+  margin: 0 0 1rem;
+}
+
+.error-page__message {
+  margin: 0 0 1.5rem;
+  max-width: 32ch;
+  line-height: 1.5;
+}
+
+.error-page__actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.error-page__btn {
+  padding: 0.5rem 1rem;
+}
+
+.error-page__btn--secondary {
+  opacity: 0.9;
+}
