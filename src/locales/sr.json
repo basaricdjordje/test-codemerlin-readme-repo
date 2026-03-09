@@ -48,6 +48,10 @@
     "title": "Podešavanja",
     "theme": "Tema"
   },
+  "offline": {
+    "message": "Niste povezani na internet. Neke funkcije mogu biti ograničene.",
+    "backOnline": "Ponovo online"
+  },
   "error": {
     "title": "Nešto nije u redu",
     "message": "Došlo je do neočekivane greške. Možete pokušati ponovo ili se vratiti na početak.",
