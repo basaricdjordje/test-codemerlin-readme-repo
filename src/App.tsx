@@ -5,6 +5,7 @@ import viteLogo from '/vite.svg'
 import { ThemeProvider } from './contexts/ThemeContext'
 import { ContactForm } from './components/ContactForm'
 import { LanguageSelector } from './components/LanguageSelector'
+import { OfflineIndicator } from './components/OfflineIndicator'
 import { Settings } from './components/Settings'
 import './App.css'
 
@@ -25,6 +26,7 @@ function AppContent() {
 
   return (
     <>
+      <OfflineIndicator />
       <main id="main-content" tabIndex={-1}>
       <LanguageSelector />
       <div>

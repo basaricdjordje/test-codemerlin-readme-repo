@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest'
 import en from './locales/en.json'
 import sr from './locales/sr.json'
 
-const translationKeys = ['common.save', 'common.cancel', 'common.delete', 'common.edit', 'common.loading', 'common.error', 'common.success', 'common.required', 'common.search', 'form.title', 'form.name', 'form.email', 'form.namePlaceholder', 'form.emailPlaceholder', 'form.submitSuccess', 'form.deleteConfirm', 'navigation.home', 'navigation.settings', 'navigation.profile', 'navigation.logout', 'app.title', 'app.help', 'app.accessibilityInfo', 'app.language', 'app.welcome', 'app.countIs', 'app.footer', 'app.version', 'app.loadingLanguage', 'app.loadError', 'app.backToTop', 'app.darkMode', 'app.lightMode', 'settings.title', 'settings.theme', 'error.title', 'error.message', 'error.tryAgain', 'error.goHome']
+const translationKeys = ['common.save', 'common.cancel', 'common.delete', 'common.edit', 'common.loading', 'common.error', 'common.success', 'common.required', 'common.search', 'form.title', 'form.name', 'form.email', 'form.namePlaceholder', 'form.emailPlaceholder', 'form.submitSuccess', 'form.deleteConfirm', 'navigation.home', 'navigation.settings', 'navigation.profile', 'navigation.logout', 'app.title', 'app.help', 'app.accessibilityInfo', 'app.language', 'app.welcome', 'app.countIs', 'app.footer', 'app.version', 'app.loadingLanguage', 'app.loadError', 'app.backToTop', 'app.darkMode', 'app.lightMode', 'settings.title', 'settings.theme', 'offline.message', 'offline.backOnline', 'error.title', 'error.message', 'error.tryAgain', 'error.goHome']
 
 function getNestedKeys(obj: Record<string, unknown>, prefix = ''): string[] {
   const keys: string[] = []
@@ -19,7 +19,7 @@ function getNestedKeys(obj: Record<string, unknown>, prefix = ''): string[] {
 
 describe('Translation keys', () => {
   it('Serbian translations contain all main UI keys', () => {
-    const srKeys = getNestedKeys(sr as Record<string, unknown>)
+    getNestedKeys(sr as Record<string, unknown>)
     for (const key of translationKeys) {
       const parts = key.split('.')
       let obj: Record<string, unknown> = sr as Record<string, unknown>
@@ -31,7 +31,7 @@ describe('Translation keys', () => {
   })
 
   it('English translations contain all main UI keys', () => {
-    const enKeys = getNestedKeys(en as Record<string, unknown>)
+    getNestedKeys(en as Record<string, unknown>)
     for (const key of translationKeys) {
       const parts = key.split('.')
       let obj: Record<string, unknown> = en as Record<string, unknown>
