@@ -1,5 +1,5 @@
-import { describe, it, expect } from 'vitest'
-import { render, screen, fireEvent, within } from '@testing-library/react'
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
+import { render, screen, fireEvent, within, act } from '@testing-library/react'
 import { I18nextProvider } from 'react-i18next'
 import i18n from './i18n'
 import App from './App'
@@ -113,5 +113,61 @@ describe('App translations', () => {
     const saveButton = within(form).getByRole('button', { name: 'Save' })
     fireEvent.click(saveButton)
     expect(screen.getAllByText('This field is required').length).toBeGreaterThan(0)
+  })
+})
+
+describe('Search filtering', () => {
+  beforeEach(() => {
+    vi.useFakeTimers()
+  })
+
+  afterEach(() => {
+    vi.useRealTimers()
+  })
+
+  it('filters content by search query (debounced)', async () => {
+    await i18n.changeLanguage('en')
+    render(
+      <I18nextProvider i18n={i18n}>
+        <App />
+      </I18nextProvider>
+    )
+    const searchInput = screen.getByRole('searchbox', { name: /search/i })
+    fireEvent.change(searchInput, { target: { value: 'pro' } })
+    expect(screen.getByText('Profile')).toBeInTheDocument()
+    await act(async () => {
+      vi.advanceTimersByTime(300)
+    })
+    expect(screen.getByText('Profile')).toBeInTheDocument()
+  })
+
+  it('shows "No results found" when no content matches', async () => {
+    await i18n.changeLanguage('en')
+    render(
+      <I18nextProvider i18n={i18n}>
+        <App />
+      </I18nextProvider>
+    )
+    const searchInput = screen.getByRole('searchbox', { name: /search/i })
+    fireEvent.change(searchInput, { target: { value: 'xyz123nomatch' } })
+    await act(async () => {
+      vi.advanceTimersByTime(300)
+    })
+    expect(screen.getByText('No results found')).toBeInTheDocument()
+  })
+
+  it('search is case-insensitive', async () => {
+    await i18n.changeLanguage('en')
+    render(
+      <I18nextProvider i18n={i18n}>
+        <App />
+      </I18nextProvider>
+    )
+    const searchInput = screen.getByRole('searchbox', { name: /search/i })
+    fireEvent.change(searchInput, { target: { value: 'PROFILE' } })
+    await act(async () => {
+      vi.advanceTimersByTime(300)
+    })
+    expect(screen.getByText('Profile')).toBeInTheDocument()
   })
 })

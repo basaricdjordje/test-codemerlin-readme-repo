@@ -1,4 +1,9 @@
 {
+  "search": {
+    "placeholder": "Pretraga",
+    "noResults": "Nema rezultata",
+    "ariaDescription": "Filtrira vidljivi sadržaj. Unesite tekst za pretragu navigacije, formulara i podešavanja."
+  },
   "common": {
     "save": "Sačuvaj",
     "cancel": "Otkaži",
