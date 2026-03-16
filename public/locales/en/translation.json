@@ -44,6 +44,9 @@
     "title": "Settings",
     "theme": "Theme"
   },
+  "auth": {
+    "loggedOut": "You have been logged out."
+  },
   "profile": {
     "title": "Profile",
     "displayName": "Display name",
