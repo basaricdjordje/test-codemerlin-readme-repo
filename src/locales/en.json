@@ -49,6 +49,15 @@
     "title": "Settings",
     "theme": "Theme"
   },
+  "profile": {
+    "title": "Profile",
+    "displayName": "Display name",
+    "displayNamePlaceholder": "Enter your display name",
+    "displayNameHint": "Saved automatically. Shown in the header when set.",
+    "theme": "Theme",
+    "language": "Language",
+    "changeLanguage": "Change language in Settings"
+  },
   "offline": {
     "message": "You are offline. Some features may be limited.",
     "backOnline": "Back online"

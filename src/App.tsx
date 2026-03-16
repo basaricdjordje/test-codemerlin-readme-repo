@@ -6,6 +6,7 @@ import { ThemeProvider } from './contexts/ThemeContext'
 import { ContactForm } from './components/ContactForm'
 import { LanguageSelector } from './components/LanguageSelector'
 import { OfflineIndicator } from './components/OfflineIndicator'
+import { Profile } from './components/Profile'
 import { Settings } from './components/Settings'
 import { useDebounce } from './hooks/useDebounce'
 import { matchesSearch } from './utils/search'
@@ -18,13 +19,20 @@ function AppContent() {
   const [count, setCount] = useState(0)
   const [searchQuery, setSearchQuery] = useState('')
   const debouncedQuery = useDebounce(searchQuery, SEARCH_DEBOUNCE_MS)
-  const [currentView, setCurrentView] = useState<'home' | 'settings'>(() =>
-    typeof window !== 'undefined' && window.location.hash === '#settings' ? 'settings' : 'home'
-  )
+  const [currentView, setCurrentView] = useState<'home' | 'settings' | 'profile'>(() => {
+    if (typeof window === 'undefined') return 'home'
+    const hash = window.location.hash
+    if (hash === '#settings') return 'settings'
+    if (hash === '#profile') return 'profile'
+    return 'home'
+  })
 
   useEffect(() => {
     const handler = () => {
-      setCurrentView(window.location.hash === '#settings' ? 'settings' : 'home')
+      const hash = window.location.hash
+      if (hash === '#settings') setCurrentView('settings')
+      else if (hash === '#profile') setCurrentView('profile')
+      else setCurrentView('home')
     }
     window.addEventListener('hashchange', handler)
     return () => window.removeEventListener('hashchange', handler)
@@ -38,6 +46,7 @@ function AppContent() {
     const loading = t('common.loading')
     const form = [t('form.title'), t('form.name'), t('form.email')]
     const settings = [t('settings.title'), t('settings.theme'), t('app.lightMode'), t('app.darkMode')]
+    const profile = [t('profile.title'), t('profile.displayName'), t('profile.theme'), t('profile.language')]
     const footer = [t('app.footer'), t('app.version', { version: '0.1.0' })]
 
     return {
@@ -48,6 +57,7 @@ function AppContent() {
       loading: matchesSearch([loading], debouncedQuery),
       form: matchesSearch(form, debouncedQuery),
       settings: matchesSearch(settings, debouncedQuery),
+      profile: matchesSearch(profile, debouncedQuery),
       footer: matchesSearch(footer, debouncedQuery),
     }
   }, [debouncedQuery, count, t])
@@ -61,6 +71,7 @@ function AppContent() {
       sectionMatches.loading ||
       sectionMatches.form ||
       sectionMatches.settings ||
+      sectionMatches.profile ||
       sectionMatches.footer,
     [sectionMatches]
   )
@@ -116,6 +127,8 @@ function AppContent() {
       )}
       {currentView === 'settings' ? (
         (sectionMatches.settings || !debouncedQuery.trim()) && <Settings />
+      ) : currentView === 'profile' ? (
+        (sectionMatches.profile || !debouncedQuery.trim()) && <Profile />
       ) : (
         <>
           {(sectionMatches.card || !debouncedQuery.trim()) && (

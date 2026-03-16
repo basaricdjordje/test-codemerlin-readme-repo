@@ -49,9 +49,14 @@
     "title": "Podešavanja",
     "theme": "Tema"
   },
-  "settings": {
-    "title": "Podešavanja",
-    "theme": "Tema"
+  "profile": {
+    "title": "Profil",
+    "displayName": "Prikazano ime",
+    "displayNamePlaceholder": "Unesite vaše prikazano ime",
+    "displayNameHint": "Čuva se automatski. Prikazuje se u zaglavlju kada je postavljeno.",
+    "theme": "Tema",
+    "language": "Jezik",
+    "changeLanguage": "Promenite jezik u Podešavanjima"
   },
   "offline": {
     "message": "Niste povezani na internet. Neke funkcije mogu biti ograničene.",
