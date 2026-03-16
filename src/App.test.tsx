@@ -102,6 +102,19 @@ describe('App translations', () => {
     expect(screen.getByText('Aplikacija')).toBeInTheDocument()
   })
 
+  it('navigates to Profile when hash is #profile', async () => {
+    await i18n.changeLanguage('en')
+    window.location.hash = '#profile'
+    render(
+      <I18nextProvider i18n={i18n}>
+        <App />
+      </I18nextProvider>
+    )
+    expect(screen.getByRole('heading', { name: /profile/i })).toBeInTheDocument()
+    expect(screen.getByLabelText(/display name/i)).toBeInTheDocument()
+    window.location.hash = ''
+  })
+
   it('ContactForm shows validation error for empty required fields', async () => {
     await i18n.changeLanguage('en')
     render(
