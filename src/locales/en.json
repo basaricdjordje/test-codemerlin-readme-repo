@@ -44,6 +44,10 @@
     "title": "Settings",
     "theme": "Theme"
   },
+  "offline": {
+    "message": "You are offline. Some features may be limited.",
+    "backOnline": "Back online"
+  },
   "error": {
     "title": "Something went wrong",
     "message": "An unexpected error occurred. You can try again or go back to the start.",
