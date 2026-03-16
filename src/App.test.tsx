@@ -111,7 +111,7 @@ describe('App translations', () => {
       </I18nextProvider>
     )
     expect(screen.getByRole('heading', { name: /profile/i })).toBeInTheDocument()
-    expect(screen.getByLabelText(/display name/i)).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /edit/i })).toBeInTheDocument()
     window.location.hash = ''
   })
 

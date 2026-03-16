@@ -44,6 +44,18 @@
     "title": "Settings",
     "theme": "Theme"
   },
+  "profile": {
+    "title": "Profile",
+    "displayName": "Display name",
+    "displayNamePlaceholder": "Enter your display name",
+    "displayNameHint": "Saved automatically.",
+    "email": "Email",
+    "emailPlaceholder": "Enter your email",
+    "theme": "Theme",
+    "language": "Language",
+    "edit": "Edit",
+    "changeInSettings": "Change in Settings"
+  },
   "error": {
     "title": "Something went wrong",
     "message": "An unexpected error occurred. You can try again or go back to the start.",

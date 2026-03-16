@@ -5,7 +5,8 @@ import i18n from '../i18n'
 import { ThemeProvider } from '../contexts/ThemeContext'
 import { Profile } from './Profile'
 
-const DISPLAY_NAME_KEY = 'app-display-name'
+const PROFILE_NAME_KEY = 'app-profile-name'
+const PROFILE_EMAIL_KEY = 'app-profile-email'
 
 function renderProfile() {
   return render(
@@ -20,43 +21,56 @@ function renderProfile() {
 describe('Profile', () => {
   beforeEach(async () => {
     await i18n.changeLanguage('en')
-    localStorage.removeItem(DISPLAY_NAME_KEY)
+    localStorage.removeItem(PROFILE_NAME_KEY)
+    localStorage.removeItem(PROFILE_EMAIL_KEY)
   })
 
-  it('renders profile with display name input, theme, and language', async () => {
+  it('renders profile with view mode, theme, and language', async () => {
     renderProfile()
     expect(screen.getByRole('heading', { name: /profile/i })).toBeInTheDocument()
-    expect(screen.getByLabelText(/display name/i)).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /edit/i })).toBeInTheDocument()
     expect(screen.getByRole('heading', { name: /theme/i })).toBeInTheDocument()
     expect(screen.getByRole('heading', { name: /language/i })).toBeInTheDocument()
-    expect(screen.getByRole('button', { name: /dark mode|light mode/i })).toBeInTheDocument()
   })
 
-  it('persists display name to localStorage', async () => {
+  it('shows Edit button and switches to edit form on click', async () => {
     renderProfile()
-    const input = screen.getByLabelText(/display name/i)
-    fireEvent.change(input, { target: { value: 'John Doe' } })
-    expect(localStorage.getItem(DISPLAY_NAME_KEY)).toBe('John Doe')
+    const editBtn = screen.getByRole('button', { name: /edit/i })
+    fireEvent.click(editBtn)
+    expect(screen.getByLabelText(/display name/i)).toBeInTheDocument()
+    expect(screen.getByLabelText(/email/i)).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /save/i })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /cancel/i })).toBeInTheDocument()
   })
 
-  it('restores display name from localStorage', async () => {
-    localStorage.setItem(DISPLAY_NAME_KEY, 'Jane')
+  it('persists name and email to localStorage on save', async () => {
     renderProfile()
-    expect(screen.getByDisplayValue('Jane')).toBeInTheDocument()
+    fireEvent.click(screen.getByRole('button', { name: /edit/i }))
+    fireEvent.change(screen.getByLabelText(/display name/i), { target: { value: 'John Doe' } })
+    fireEvent.change(screen.getByLabelText(/email/i), { target: { value: 'john@example.com' } })
+    fireEvent.click(screen.getByRole('button', { name: /save/i }))
+    expect(localStorage.getItem(PROFILE_NAME_KEY)).toBe('John Doe')
+    expect(localStorage.getItem(PROFILE_EMAIL_KEY)).toBe('john@example.com')
   })
 
-  it('theme toggle changes theme', async () => {
-    localStorage.setItem('app-theme', 'dark')
+  it('restores name and email from localStorage', async () => {
+    localStorage.setItem(PROFILE_NAME_KEY, 'Jane')
+    localStorage.setItem(PROFILE_EMAIL_KEY, 'jane@test.com')
     renderProfile()
-    const toggle = screen.getByRole('button', { name: /dark mode|light mode/i })
-    fireEvent.click(toggle)
-    expect(document.documentElement.dataset.theme).toBe('light')
+    expect(screen.getByText('Jane')).toBeInTheDocument()
+    expect(screen.getByText('jane@test.com')).toBeInTheDocument()
+  })
+
+  it('shows links to Settings for theme and language', async () => {
+    renderProfile()
+    const links = screen.getAllByRole('link', { name: /change in settings/i })
+    expect(links.length).toBeGreaterThanOrEqual(1)
   })
 
   it('shows Serbian translations when language is sr', async () => {
     await i18n.changeLanguage('sr')
     renderProfile()
     expect(screen.getByRole('heading', { name: 'Profil' })).toBeInTheDocument()
-    expect(screen.getByLabelText(/prikazano ime/i)).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /izmeni/i })).toBeInTheDocument()
   })
 })

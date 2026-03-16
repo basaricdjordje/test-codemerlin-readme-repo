@@ -53,10 +53,13 @@
     "title": "Profil",
     "displayName": "Prikazano ime",
     "displayNamePlaceholder": "Unesite vaše prikazano ime",
-    "displayNameHint": "Čuva se automatski. Prikazuje se u zaglavlju kada je postavljeno.",
+    "displayNameHint": "Čuva se automatski.",
+    "email": "Email",
+    "emailPlaceholder": "Unesite vaš email",
     "theme": "Tema",
     "language": "Jezik",
-    "changeLanguage": "Promenite jezik u Podešavanjima"
+    "edit": "Izmeni",
+    "changeInSettings": "Promeni u Podešavanjima"
   },
   "offline": {
     "message": "Niste povezani na internet. Neke funkcije mogu biti ograničene.",

@@ -44,6 +44,18 @@
     "title": "Podešavanja",
     "theme": "Tema"
   },
+  "profile": {
+    "title": "Profil",
+    "displayName": "Prikazano ime",
+    "displayNamePlaceholder": "Unesite vaše prikazano ime",
+    "displayNameHint": "Čuva se automatski.",
+    "email": "Email",
+    "emailPlaceholder": "Unesite vaš email",
+    "theme": "Tema",
+    "language": "Jezik",
+    "edit": "Izmeni",
+    "changeInSettings": "Promeni u Podešavanjima"
+  },
   "error": {
     "title": "Nešto nije u redu",
     "message": "Došlo je do neočekivane greške. Možete pokušati ponovo ili se vratiti na početak.",

@@ -61,6 +61,22 @@
   font-size: 0.875rem;
 }
 
-.profile-page .theme-toggle {
+.profile-view .profile-row {
+  margin-bottom: 0.5rem;
+}
+
+.profile-view .profile-row strong {
+  display: inline-block;
+  min-width: 120px;
+}
+
+.profile-edit-btn {
+  margin-top: 1rem;
   padding: 0.5rem 1rem;
+}
+
+.profile-form .profile-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
 }

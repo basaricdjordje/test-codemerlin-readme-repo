@@ -53,10 +53,13 @@
     "title": "Profile",
     "displayName": "Display name",
     "displayNamePlaceholder": "Enter your display name",
-    "displayNameHint": "Saved automatically. Shown in the header when set.",
+    "displayNameHint": "Saved automatically.",
+    "email": "Email",
+    "emailPlaceholder": "Enter your email",
     "theme": "Theme",
     "language": "Language",
-    "changeLanguage": "Change language in Settings"
+    "edit": "Edit",
+    "changeInSettings": "Change in Settings"
   },
   "offline": {
     "message": "You are offline. Some features may be limited.",
