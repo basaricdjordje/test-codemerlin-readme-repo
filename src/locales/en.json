@@ -1,4 +1,9 @@
 {
+  "search": {
+    "placeholder": "Search",
+    "noResults": "No results found",
+    "ariaDescription": "Filters visible content. Type to search navigation, forms, and settings."
+  },
   "common": {
     "save": "Save",
     "cancel": "Cancel",
