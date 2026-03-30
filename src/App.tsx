@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import { ThemeProvider } from './contexts/ThemeContext'
+import { SessionProvider, useSession } from './contexts/SessionContext'
 import { ContactForm } from './components/ContactForm'
 import { LanguageSelector } from './components/LanguageSelector'
 import { OfflineIndicator } from './components/OfflineIndicator'
@@ -16,6 +17,7 @@ const SEARCH_DEBOUNCE_MS = 300
 
 function AppContent() {
   const { t } = useTranslation()
+  const { logout } = useSession()
   const [count, setCount] = useState(0)
   const [searchQuery, setSearchQuery] = useState('')
   const debouncedQuery = useDebounce(searchQuery, SEARCH_DEBOUNCE_MS)
@@ -122,7 +124,9 @@ function AppContent() {
           <a href="#home">{t('navigation.home')}</a>
           <a href="#settings">{t('navigation.settings')}</a>
           <a href="#profile">{t('navigation.profile')}</a>
-          <button type="button">{t('navigation.logout')}</button>
+          <button type="button" onClick={logout}>
+            {t('navigation.logout')}
+          </button>
         </nav>
       )}
       {currentView === 'settings' ? (
@@ -164,7 +168,9 @@ function AppContent() {
 function App() {
   return (
     <ThemeProvider>
-      <AppContent />
+      <SessionProvider>
+        <AppContent />
+      </SessionProvider>
     </ThemeProvider>
   )
 }

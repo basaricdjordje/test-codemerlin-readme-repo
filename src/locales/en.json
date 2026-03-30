@@ -47,7 +47,15 @@
   },
   "settings": {
     "title": "Settings",
-    "theme": "Theme"
+    "theme": "Theme",
+    "idleTimeout": "Auto log out after inactivity",
+    "idleTimeoutHint": "When you are inactive for this long, you will see a warning before being logged out.",
+    "idleTimeoutMinutes": "{{count}} minutes"
+  },
+  "session": {
+    "idleTitle": "Session expiring",
+    "idleMessage": "You will be logged out in {{seconds}} seconds.",
+    "stayLoggedIn": "Stay logged in"
   },
   "profile": {
     "title": "Profile",

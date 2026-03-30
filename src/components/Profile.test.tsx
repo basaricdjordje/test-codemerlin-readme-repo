@@ -3,16 +3,17 @@ import { render, screen, fireEvent } from '@testing-library/react'
 import { I18nextProvider } from 'react-i18next'
 import i18n from '../i18n'
 import { ThemeProvider } from '../contexts/ThemeContext'
+import { SessionProvider } from '../contexts/SessionContext'
+import { PROFILE_EMAIL_KEY, PROFILE_NAME_KEY } from '../constants/profileStorage'
 import { Profile } from './Profile'
-
-const PROFILE_NAME_KEY = 'app-profile-name'
-const PROFILE_EMAIL_KEY = 'app-profile-email'
 
 function renderProfile() {
   return render(
     <I18nextProvider i18n={i18n}>
       <ThemeProvider>
-        <Profile />
+        <SessionProvider>
+          <Profile />
+        </SessionProvider>
       </ThemeProvider>
     </I18nextProvider>
   )

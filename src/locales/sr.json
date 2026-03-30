@@ -47,7 +47,15 @@
   },
   "settings": {
     "title": "Podešavanja",
-    "theme": "Tema"
+    "theme": "Tema",
+    "idleTimeout": "Automatska odjava posle neaktivnosti",
+    "idleTimeoutHint": "Ako ste neaktivni ovoliko dugo, videćete upozorenje pre odjave.",
+    "idleTimeoutMinutes": "{{count}} minuta"
+  },
+  "session": {
+    "idleTitle": "Sesija ističe",
+    "idleMessage": "Bićete odjavljeni za {{seconds}} sekundi.",
+    "stayLoggedIn": "Ostani prijavljen"
   },
   "profile": {
     "title": "Profil",
