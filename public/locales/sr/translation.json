@@ -44,6 +44,9 @@
     "title": "Podešavanja",
     "theme": "Tema"
   },
+  "auth": {
+    "loggedOut": "Uspešno ste se odjavili."
+  },
   "profile": {
     "title": "Profil",
     "displayName": "Prikazano ime",
