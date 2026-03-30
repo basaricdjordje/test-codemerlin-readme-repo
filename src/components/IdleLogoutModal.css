@@ -1,0 +1,61 @@
+.idle-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.idle-modal {
+  max-width: 28rem;
+  width: 100%;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  background: var(--color-surface, #fff);
+  color: var(--color-text, #213547);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme='dark'] .idle-modal {
+  --color-surface: #1a1a1a;
+  --color-text: rgba(255, 255, 255, 0.92);
+}
+
+.idle-modal-title {
+  margin: 0 0 0.75rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.idle-modal-desc {
+  margin: 0 0 1.25rem;
+  line-height: 1.5;
+}
+
+.idle-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+.idle-modal-primary {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  background: #646cff;
+  color: #fff;
+}
+
+.idle-modal-primary:hover {
+  filter: brightness(1.08);
+}
+
+.idle-modal-primary:focus-visible {
+  outline: 2px solid #646cff;
+  outline-offset: 2px;
+}

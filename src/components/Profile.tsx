@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useTheme } from '../contexts/ThemeContext'
+import { useSession } from '../contexts/SessionContext'
+import { PROFILE_EMAIL_KEY, PROFILE_NAME_KEY } from '../constants/profileStorage'
 import './Profile.css'
-
-const PROFILE_NAME_KEY = 'app-profile-name'
-const PROFILE_EMAIL_KEY = 'app-profile-email'
 
 function getStored(nameKey: string, emailKey: string): { name: string; email: string } {
   if (typeof window === 'undefined') return { name: '', email: '' }
@@ -17,6 +16,7 @@ function getStored(nameKey: string, emailKey: string): { name: string; email: st
 export function Profile() {
   const { t, i18n } = useTranslation()
   const { theme } = useTheme()
+  const { profileVersion } = useSession()
   const [isEditing, setIsEditing] = useState(false)
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -29,7 +29,7 @@ export function Profile() {
     setEmail(e)
     setEditName(n)
     setEditEmail(e)
-  }, [])
+  }, [profileVersion])
 
   const handleSave = (e: React.FormEvent) => {
     e.preventDefault()
