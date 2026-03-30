@@ -89,6 +89,12 @@
   font-size: 0.875rem;
 }
 
+.logout-message {
+  color: #646cff;
+  margin: 1rem 0;
+  font-size: 1rem;
+}
+
 .back-to-top {
   display: inline-block;
   margin-top: 1rem;

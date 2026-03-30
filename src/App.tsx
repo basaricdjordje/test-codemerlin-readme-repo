@@ -13,12 +13,15 @@ import { matchesSearch } from './utils/search'
 import './App.css'
 
 const SEARCH_DEBOUNCE_MS = 300
+const PROFILE_NAME_KEY = 'app-profile-name'
+const PROFILE_EMAIL_KEY = 'app-profile-email'
 
 function AppContent() {
   const { t } = useTranslation()
   const [count, setCount] = useState(0)
   const [searchQuery, setSearchQuery] = useState('')
   const debouncedQuery = useDebounce(searchQuery, SEARCH_DEBOUNCE_MS)
+  const [showLoggedOutMessage, setShowLoggedOutMessage] = useState(false)
   const [currentView, setCurrentView] = useState<'home' | 'settings' | 'profile'>(() => {
     if (typeof window === 'undefined') return 'home'
     const hash = window.location.hash
@@ -78,6 +81,17 @@ function AppContent() {
 
   const showNoResults = debouncedQuery.trim().length > 0 && !hasAnyMatch
 
+  const handleLogout = () => {
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem(PROFILE_NAME_KEY)
+      localStorage.removeItem(PROFILE_EMAIL_KEY)
+    }
+    window.location.hash = '#home'
+    setCurrentView('home')
+    setShowLoggedOutMessage(true)
+    setTimeout(() => setShowLoggedOutMessage(false), 3000)
+  }
+
   return (
     <>
       <OfflineIndicator />
@@ -117,12 +131,19 @@ function AppContent() {
           {t('search.noResults')}
         </p>
       )}
+      {showLoggedOutMessage && (
+        <p className="logout-message" role="status" aria-live="polite">
+          {t('auth.loggedOut')}
+        </p>
+      )}
       {(sectionMatches.nav || !debouncedQuery.trim()) && (
         <nav>
           <a href="#home">{t('navigation.home')}</a>
           <a href="#settings">{t('navigation.settings')}</a>
           <a href="#profile">{t('navigation.profile')}</a>
-          <button type="button">{t('navigation.logout')}</button>
+          <button type="button" onClick={handleLogout} aria-label={t('navigation.logout')}>
+            {t('navigation.logout')}
+          </button>
         </nav>
       )}
       {currentView === 'settings' ? (

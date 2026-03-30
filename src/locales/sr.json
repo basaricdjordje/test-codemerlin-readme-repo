@@ -61,6 +61,9 @@
     "edit": "Izmeni",
     "changeInSettings": "Promeni u Podešavanjima"
   },
+  "auth": {
+    "loggedOut": "Uspešno ste se odjavili."
+  },
   "offline": {
     "message": "Niste povezani na internet. Neke funkcije mogu biti ograničene.",
     "backOnline": "Ponovo online"

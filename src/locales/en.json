@@ -61,6 +61,9 @@
     "edit": "Edit",
     "changeInSettings": "Change in Settings"
   },
+  "auth": {
+    "loggedOut": "You have been logged out."
+  },
   "offline": {
     "message": "You are offline. Some features may be limited.",
     "backOnline": "Back online"
