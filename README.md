@@ -70,5 +70,17 @@ A **language selector** in the header lets users switch between English and Serb
 
 - `npm run dev` – start development server
 - `npm run build` – build for production
-- `npm run test` – run tests
+- `npm run test` – run unit tests (Vitest)
+- `npm run test:e2e` – run end-to-end smoke tests (Playwright; starts dev server automatically)
+- `npm run test:e2e:ui` – Playwright UI mode
 - `npm run preview` – preview production build
+
+**E2E smoke tests** live in `e2e/`. They use Chromium and require browsers installed once: `npx playwright install chromium`.
+
+### Jira ticket helper
+
+1. Copy `.env.example` to `.env` and set `JIRA_EMAIL` and `JIRA_API_TOKEN`.
+2. Run `npm run jira:tickets` to create tickets in project `KAN` (or set `JIRA_PROJECT` in `.env`).
+3. `npm run jira:tickets:single` creates only the Playwright E2E ticket (`JIRA_SINGLE=1`).
+
+The file `.env` is gitignored; never commit API tokens.
