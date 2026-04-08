@@ -20,7 +20,8 @@
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
     "jira:tickets": "node scripts/create-jira-tickets.mjs",
-    "jira:tickets:single": "JIRA_SINGLE=1 node scripts/create-jira-tickets.mjs"
+    "jira:tickets:single": "JIRA_SINGLE=1 node scripts/create-jira-tickets.mjs",
+    "jira:big-ticket": "node scripts/jira-big-ticket.mjs"
   },
   "dependencies": {
     "i18next": "^25.8.13",

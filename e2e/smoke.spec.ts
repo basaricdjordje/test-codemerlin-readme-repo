@@ -9,12 +9,12 @@ test.describe('smoke', () => {
 
   test('navigates to Settings via hash', async ({ page }) => {
     await page.goto('/#settings')
-    await expect(page.getByRole('heading', { name: /settings/i })).toBeVisible()
+    await expect(page.getByRole('heading', { level: 1, name: /settings/i })).toBeVisible()
   })
 
   test('navigates to Profile via hash', async ({ page }) => {
     await page.goto('/#profile')
-    await expect(page.getByRole('heading', { name: /profile/i })).toBeVisible()
+    await expect(page.getByRole('heading', { level: 1, name: /profile/i })).toBeVisible()
   })
 
   test('switches language to Serbian', async ({ page }) => {

@@ -1,4 +1,12 @@
 {
+  "accessibility": {
+    "skipToMain": "Preskoči na glavni sadržaj"
+  },
+  "search": {
+    "placeholder": "Pretraga",
+    "noResults": "Nema rezultata",
+    "ariaDescription": "Filtrira vidljivi sadržaj. Unesite tekst za pretragu navigacije, formulara i podešavanja."
+  },
   "common": {
     "save": "Sačuvaj",
     "cancel": "Otkaži",
@@ -17,13 +25,15 @@
     "namePlaceholder": "Unesite vaše ime",
     "emailPlaceholder": "Unesite vaš email",
     "submitSuccess": "Formular je uspešno poslat",
-    "deleteConfirm": "Da li ste sigurni da želite da obrišete?"
+    "deleteConfirm": "Da li ste sigurni da želite da obrišete?",
+    "deleteDialogTitle": "Potvrda brisanja"
   },
   "navigation": {
     "home": "Početna",
     "settings": "Podešavanja",
     "profile": "Profil",
-    "logout": "Odjava"
+    "logout": "Odjava",
+    "navLabel": "Glavna navigacija"
   },
   "app": {
     "title": "Aplikacija",
@@ -44,9 +54,6 @@
     "title": "Podešavanja",
     "theme": "Tema"
   },
-  "auth": {
-    "loggedOut": "Uspešno ste se odjavili."
-  },
   "profile": {
     "title": "Profil",
     "displayName": "Prikazano ime",
@@ -58,6 +65,13 @@
     "language": "Jezik",
     "edit": "Izmeni",
     "changeInSettings": "Promeni u Podešavanjima"
+  },
+  "auth": {
+    "loggedOut": "Uspešno ste se odjavili."
+  },
+  "offline": {
+    "message": "Niste povezani na internet. Neke funkcije mogu biti ograničene.",
+    "backOnline": "Ponovo online"
   },
   "error": {
     "title": "Nešto nije u redu",

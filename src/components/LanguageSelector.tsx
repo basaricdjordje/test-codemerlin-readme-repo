@@ -16,7 +16,7 @@ export function LanguageSelector() {
     const previousLng = i18n.language
     try {
       await i18n.changeLanguage(lng)
-    } catch (err) {
+    } catch {
       setLoadError(t('app.loadError'))
       await i18n.changeLanguage(previousLng)
     } finally {

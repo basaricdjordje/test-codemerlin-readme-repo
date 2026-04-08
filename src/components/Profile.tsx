@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useTheme } from '../contexts/ThemeContext'
 import './Profile.css'
@@ -18,18 +18,10 @@ export function Profile() {
   const { t, i18n } = useTranslation()
   const { theme } = useTheme()
   const [isEditing, setIsEditing] = useState(false)
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [editName, setEditName] = useState('')
-  const [editEmail, setEditEmail] = useState('')
-
-  useEffect(() => {
-    const { name: n, email: e } = getStored(PROFILE_NAME_KEY, PROFILE_EMAIL_KEY)
-    setName(n)
-    setEmail(e)
-    setEditName(n)
-    setEditEmail(e)
-  }, [])
+  const [name, setName] = useState(() => getStored(PROFILE_NAME_KEY, PROFILE_EMAIL_KEY).name)
+  const [email, setEmail] = useState(() => getStored(PROFILE_NAME_KEY, PROFILE_EMAIL_KEY).email)
+  const [editName, setEditName] = useState(() => getStored(PROFILE_NAME_KEY, PROFILE_EMAIL_KEY).name)
+  const [editEmail, setEditEmail] = useState(() => getStored(PROFILE_NAME_KEY, PROFILE_EMAIL_KEY).email)
 
   const handleSave = (e: React.FormEvent) => {
     e.preventDefault()
@@ -52,7 +44,7 @@ export function Profile() {
 
   return (
     <section className="profile-page" aria-labelledby="profile-heading">
-      <h2 id="profile-heading">{t('profile.title')}</h2>
+      <h1 id="profile-heading">{t('profile.title')}</h1>
 
       {isEditing ? (
         <form onSubmit={handleSave} className="profile-form">

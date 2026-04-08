@@ -1,4 +1,12 @@
 {
+  "accessibility": {
+    "skipToMain": "Skip to main content"
+  },
+  "search": {
+    "placeholder": "Search",
+    "noResults": "No results found",
+    "ariaDescription": "Filters visible content. Type to search navigation, forms, and settings."
+  },
   "common": {
     "save": "Save",
     "cancel": "Cancel",
@@ -17,13 +25,15 @@
     "namePlaceholder": "Enter your name",
     "emailPlaceholder": "Enter your email",
     "submitSuccess": "Form submitted successfully",
-    "deleteConfirm": "Are you sure you want to delete this?"
+    "deleteConfirm": "Are you sure you want to delete this?",
+    "deleteDialogTitle": "Confirm deletion"
   },
   "navigation": {
     "home": "Home",
     "settings": "Settings",
     "profile": "Profile",
-    "logout": "Log out"
+    "logout": "Log out",
+    "navLabel": "Primary navigation"
   },
   "app": {
     "title": "Application",
@@ -44,9 +54,6 @@
     "title": "Settings",
     "theme": "Theme"
   },
-  "auth": {
-    "loggedOut": "You have been logged out."
-  },
   "profile": {
     "title": "Profile",
     "displayName": "Display name",
@@ -58,6 +65,13 @@
     "language": "Language",
     "edit": "Edit",
     "changeInSettings": "Change in Settings"
+  },
+  "auth": {
+    "loggedOut": "You have been logged out."
+  },
+  "offline": {
+    "message": "You are offline. Some features may be limited.",
+    "backOnline": "Back online"
   },
   "error": {
     "title": "Something went wrong",
