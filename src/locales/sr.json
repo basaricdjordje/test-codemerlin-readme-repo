@@ -1,4 +1,7 @@
 {
+  "accessibility": {
+    "skipToMain": "Preskoči na glavni sadržaj"
+  },
   "search": {
     "placeholder": "Pretraga",
     "noResults": "Nema rezultata",
@@ -22,13 +25,15 @@
     "namePlaceholder": "Unesite vaše ime",
     "emailPlaceholder": "Unesite vaš email",
     "submitSuccess": "Formular je uspešno poslat",
-    "deleteConfirm": "Da li ste sigurni da želite da obrišete?"
+    "deleteConfirm": "Da li ste sigurni da želite da obrišete?",
+    "deleteDialogTitle": "Potvrda brisanja"
   },
   "navigation": {
     "home": "Početna",
     "settings": "Podešavanja",
     "profile": "Profil",
-    "logout": "Odjava"
+    "logout": "Odjava",
+    "navLabel": "Glavna navigacija"
   },
   "app": {
     "title": "Aplikacija",
@@ -60,6 +65,9 @@
     "language": "Jezik",
     "edit": "Izmeni",
     "changeInSettings": "Promeni u Podešavanjima"
+  },
+  "auth": {
+    "loggedOut": "Uspešno ste se odjavili."
   },
   "offline": {
     "message": "Niste povezani na internet. Neke funkcije mogu biti ograničene.",

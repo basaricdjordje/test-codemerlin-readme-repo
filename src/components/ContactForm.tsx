@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import './ContactForm.css'
 
@@ -9,6 +9,43 @@ export function ContactForm() {
   const [errors, setErrors] = useState<{ name?: string; email?: string }>({})
   const [feedback, setFeedback] = useState<'success' | 'error' | null>(null)
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false)
+  const dialogRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (!showDeleteConfirm) return
+    const dialog = dialogRef.current
+    if (!dialog) return
+
+    const focusable = Array.from(
+      dialog.querySelectorAll<HTMLElement>(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      )
+    ).filter((el) => !el.hasAttribute('disabled'))
+    const first = focusable[0]
+    const last = focusable[focusable.length - 1]
+    first?.focus()
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        e.preventDefault()
+        setShowDeleteConfirm(false)
+        return
+      }
+      if (e.key !== 'Tab' || focusable.length === 0) return
+      if (e.shiftKey) {
+        if (document.activeElement === first) {
+          e.preventDefault()
+          last?.focus()
+        }
+      } else if (document.activeElement === last) {
+        e.preventDefault()
+        first?.focus()
+      }
+    }
+
+    document.addEventListener('keydown', onKeyDown)
+    return () => document.removeEventListener('keydown', onKeyDown)
+  }, [showDeleteConfirm])
 
   const validate = (): boolean => {
     const newErrors: { name?: string; email?: string } = {}
@@ -103,21 +140,38 @@ export function ContactForm() {
         </div>
       )}
       {showDeleteConfirm && (
-        <div className="delete-confirm-dialog" role="dialog" aria-modal="true">
-          <p>{t('form.deleteConfirm')}</p>
-          <div className="dialog-actions">
-            <button
-              type="button"
-              className="delete-btn"
-              onClick={() => {
-                handleCancel()
-              }}
-            >
-              {t('common.delete')}
-            </button>
-            <button type="button" onClick={() => setShowDeleteConfirm(false)}>
-              {t('common.cancel')}
-            </button>
+        <div
+          className="delete-confirm-overlay"
+          role="presentation"
+          onClick={() => setShowDeleteConfirm(false)}
+        >
+          <div
+            ref={dialogRef}
+            className="delete-confirm-dialog"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="delete-dialog-title"
+            aria-describedby="delete-dialog-desc"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h2 id="delete-dialog-title" className="delete-dialog-heading">
+              {t('form.deleteDialogTitle')}
+            </h2>
+            <p id="delete-dialog-desc">{t('form.deleteConfirm')}</p>
+            <div className="dialog-actions">
+              <button type="button" onClick={() => setShowDeleteConfirm(false)}>
+                {t('common.cancel')}
+              </button>
+              <button
+                type="button"
+                className="delete-btn"
+                onClick={() => {
+                  handleCancel()
+                }}
+              >
+                {t('common.delete')}
+              </button>
+            </div>
           </div>
         </div>
       )}

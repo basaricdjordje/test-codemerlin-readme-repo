@@ -13,12 +13,16 @@ import { matchesSearch } from './utils/search'
 import './App.css'
 
 const SEARCH_DEBOUNCE_MS = 300
+const PROFILE_NAME_KEY = 'app-profile-name'
+const PROFILE_EMAIL_KEY = 'app-profile-email'
+const APP_VERSION = __APP_VERSION__
 
 function AppContent() {
   const { t } = useTranslation()
   const [count, setCount] = useState(0)
   const [searchQuery, setSearchQuery] = useState('')
   const debouncedQuery = useDebounce(searchQuery, SEARCH_DEBOUNCE_MS)
+  const [showLoggedOutMessage, setShowLoggedOutMessage] = useState(false)
   const [currentView, setCurrentView] = useState<'home' | 'settings' | 'profile'>(() => {
     if (typeof window === 'undefined') return 'home'
     const hash = window.location.hash
@@ -47,7 +51,7 @@ function AppContent() {
     const form = [t('form.title'), t('form.name'), t('form.email')]
     const settings = [t('settings.title'), t('settings.theme'), t('app.lightMode'), t('app.darkMode')]
     const profile = [t('profile.title'), t('profile.displayName'), t('profile.theme'), t('profile.language')]
-    const footer = [t('app.footer'), t('app.version', { version: '0.1.0' })]
+    const footer = [t('app.footer'), t('app.version', { version: APP_VERSION })]
 
     return {
       header: matchesSearch([title], debouncedQuery),
@@ -78,22 +82,38 @@ function AppContent() {
 
   const showNoResults = debouncedQuery.trim().length > 0 && !hasAnyMatch
 
+  const handleLogout = () => {
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem(PROFILE_NAME_KEY)
+      localStorage.removeItem(PROFILE_EMAIL_KEY)
+    }
+    window.location.hash = '#home'
+    setCurrentView('home')
+    setShowLoggedOutMessage(true)
+    setTimeout(() => setShowLoggedOutMessage(false), 3000)
+  }
+
   return (
     <>
       <OfflineIndicator />
+      <a href="#main-content" className="skip-link">
+        {t('accessibility.skipToMain')}
+      </a>
       <main id="main-content" tabIndex={-1}>
       <LanguageSelector />
       {(sectionMatches.header || !debouncedQuery.trim()) && (
         <div>
-          <a href="https://vite.dev" target="_blank">
+          <a href="https://vite.dev" target="_blank" rel="noopener noreferrer">
             <img src={viteLogo} className="logo" alt="Vite logo" />
           </a>
-          <a href="https://react.dev" target="_blank">
+          <a href="https://react.dev" target="_blank" rel="noopener noreferrer">
             <img src={reactLogo} className="logo react" alt="React logo" />
           </a>
         </div>
       )}
-      {(sectionMatches.header || !debouncedQuery.trim()) && <h1>{t('app.title')}</h1>}
+      {currentView === 'home' && (sectionMatches.header || !debouncedQuery.trim()) && (
+        <h1>{t('app.title')}</h1>
+      )}
       {(sectionMatches.welcome || !debouncedQuery.trim()) && (
         <p className="welcome-message">{t('app.welcome')}</p>
       )}
@@ -117,12 +137,19 @@ function AppContent() {
           {t('search.noResults')}
         </p>
       )}
+      {showLoggedOutMessage && (
+        <p className="logout-message" role="status" aria-live="polite">
+          {t('auth.loggedOut')}
+        </p>
+      )}
       {(sectionMatches.nav || !debouncedQuery.trim()) && (
-        <nav>
+        <nav aria-label={t('navigation.navLabel')}>
           <a href="#home">{t('navigation.home')}</a>
           <a href="#settings">{t('navigation.settings')}</a>
           <a href="#profile">{t('navigation.profile')}</a>
-          <button type="button">{t('navigation.logout')}</button>
+          <button type="button" onClick={handleLogout} aria-label={t('navigation.logout')}>
+            {t('navigation.logout')}
+          </button>
         </nav>
       )}
       {currentView === 'settings' ? (
@@ -154,7 +181,7 @@ function AppContent() {
       <a href="#main-content" className="back-to-top">{t('app.backToTop')}</a>
       {(sectionMatches.footer || !debouncedQuery.trim()) && (
         <footer className="app-footer">
-          {t('app.footer')} · {t('app.version', { version: '0.1.0' })}
+          {t('app.footer')} · {t('app.version', { version: APP_VERSION })}
         </footer>
       )}
     </>
