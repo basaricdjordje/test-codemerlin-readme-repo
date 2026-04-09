@@ -135,3 +135,29 @@
   margin-top: 0.75rem;
   flex-wrap: wrap;
 }
+
+/* Responsive Breakpoints */
+@media (max-width: 375px) {
+  .contact-form-section {
+    margin: 1rem auto;
+    padding: 1rem;
+  }
+  .form-actions {
+    flex-direction: column;
+  }
+  .form-actions button {
+    width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .contact-form-section {
+    max-width: 500px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .contact-form-section {
+    max-width: 600px;
+  }
+}
