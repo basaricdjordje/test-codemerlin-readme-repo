@@ -28,9 +28,27 @@
   padding: 0.5rem 0.75rem;
   border: 1px solid #333;
   border-radius: 4px;
-  background: #1a1a1a;
-  color: inherit;
   box-sizing: border-box;
+}
+
+:root[data-theme='dark'] .form-group input {
+  background: #1a1a1a;
+  color: rgba(255, 255, 255, 0.92);
+  border-color: #444;
+}
+
+:root[data-theme='dark'] .form-group input::placeholder {
+  color: #a3a3a3;
+}
+
+:root[data-theme='light'] .form-group input {
+  background: #ffffff;
+  color: #213547;
+  border-color: #64748b;
+}
+
+:root[data-theme='light'] .form-group input::placeholder {
+  color: #64748b;
 }
 
 .form-group input:focus {
@@ -66,7 +84,11 @@
 
 .form-actions button[type="button"] {
   background: transparent;
-  color: #646cff;
+  color: #4a4ed8;
+}
+
+:root[data-theme='dark'] .form-actions button[type="button"] {
+  color: #a5b4fc;
 }
 
 .delete-btn {
@@ -75,22 +97,9 @@
   color: #ff6b6b !important;
 }
 
-.feedback {
-  margin-top: 1rem;
-  padding: 0.75rem;
-  border-radius: 4px;
-}
-
-.feedback.success {
-  background: rgba(67, 179, 105, 0.2);
-  border: 1px solid #43b369;
-  color: #43b369;
-}
-
-.feedback.error {
-  background: rgba(255, 107, 107, 0.2);
-  border: 1px solid #ff6b6b;
-  color: #ff6b6b;
+:root[data-theme='light'] .delete-btn {
+  border-color: #b91c1c !important;
+  color: #b91c1c !important;
 }
 
 .delete-confirm-overlay {

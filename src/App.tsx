@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import { ThemeProvider } from './contexts/ThemeContext'
+import { ToastProvider, useToast } from './contexts/ToastContext'
 import { ContactForm } from './components/ContactForm'
 import { LanguageSelector } from './components/LanguageSelector'
 import { OfflineIndicator } from './components/OfflineIndicator'
@@ -18,11 +19,11 @@ const PROFILE_EMAIL_KEY = 'app-profile-email'
 const APP_VERSION = __APP_VERSION__
 
 function AppContent() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
+  const { showToast } = useToast()
   const [count, setCount] = useState(0)
   const [searchQuery, setSearchQuery] = useState('')
   const debouncedQuery = useDebounce(searchQuery, SEARCH_DEBOUNCE_MS)
-  const [showLoggedOutMessage, setShowLoggedOutMessage] = useState(false)
   const [currentView, setCurrentView] = useState<'home' | 'settings' | 'profile'>(() => {
     if (typeof window === 'undefined') return 'home'
     const hash = window.location.hash
@@ -41,6 +42,11 @@ function AppContent() {
     window.addEventListener('hashchange', handler)
     return () => window.removeEventListener('hashchange', handler)
   }, [])
+
+  useEffect(() => {
+    const code = i18n.language.split('-')[0] ?? 'en'
+    document.documentElement.lang = code === 'sr' ? 'sr' : 'en'
+  }, [i18n.language])
 
   const sectionMatches = useMemo(() => {
     const title = t('app.title')
@@ -89,8 +95,7 @@ function AppContent() {
     }
     window.location.hash = '#home'
     setCurrentView('home')
-    setShowLoggedOutMessage(true)
-    setTimeout(() => setShowLoggedOutMessage(false), 3000)
+    showToast(t('auth.loggedOut'), 'success')
   }
 
   return (
@@ -135,11 +140,6 @@ function AppContent() {
       {showNoResults && (
         <p id="search-no-results" className="search-no-results" role="status">
           {t('search.noResults')}
-        </p>
-      )}
-      {showLoggedOutMessage && (
-        <p className="logout-message" role="status" aria-live="polite">
-          {t('auth.loggedOut')}
         </p>
       )}
       {(sectionMatches.nav || !debouncedQuery.trim()) && (
@@ -191,7 +191,9 @@ function AppContent() {
 function App() {
   return (
     <ThemeProvider>
-      <AppContent />
+      <ToastProvider>
+        <AppContent />
+      </ToastProvider>
     </ThemeProvider>
   )
 }

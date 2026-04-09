@@ -7,6 +7,7 @@ const translationKeys = [
   'common.save',
   'common.cancel',
   'common.delete',
+  'common.dismiss',
   'common.edit',
   'common.loading',
   'common.error',

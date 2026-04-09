@@ -31,7 +31,7 @@ test.describe('smoke', () => {
     })
     await page.reload()
     await page.getByRole('button', { name: /log out/i }).click()
-    await expect(page.getByText(/you have been logged out/i)).toBeVisible()
+    await expect(page.getByTestId('app-toast')).toContainText(/you have been logged out/i)
     const name = await page.evaluate(() => localStorage.getItem('app-profile-name'))
     const email = await page.evaluate(() => localStorage.getItem('app-profile-email'))
     expect(name).toBeNull()

@@ -16,7 +16,8 @@
     "error": "Error",
     "success": "Success",
     "required": "This field is required",
-    "search": "Search"
+    "search": "Search",
+    "dismiss": "Dismiss"
   },
   "form": {
     "title": "Contact Form",

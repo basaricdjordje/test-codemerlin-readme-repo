@@ -16,7 +16,8 @@ export function LanguageSelector() {
     const previousLng = i18n.language
     try {
       await i18n.changeLanguage(lng)
-    } catch {
+    } catch (err) {
+      console.error('Failed to change language', err)
       setLoadError(t('app.loadError'))
       await i18n.changeLanguage(previousLng)
     } finally {
@@ -54,6 +55,7 @@ export function LanguageSelector() {
         type="button"
         className="theme-toggle"
         onClick={toggleTheme}
+        disabled={isLoading}
         aria-label={theme === 'dark' ? t('app.lightMode') : t('app.darkMode')}
         title={theme === 'dark' ? t('app.lightMode') : t('app.darkMode')}
       >

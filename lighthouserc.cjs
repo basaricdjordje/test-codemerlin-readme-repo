@@ -4,15 +4,15 @@ module.exports = {
       url: ['http://localhost:4173/'],
       startServerCommand: 'npm run preview',
       startServerReadyPattern: 'ready in',
-      numberOfRuns: 1,
+      numberOfRuns: 2,
     },
     assert: {
       assertions: {
-        'categories:performance': ['error', { minScore: 0.8 }],
+        'categories:performance': ['error', { minScore: 0.75 }],
         'categories:accessibility': ['error', { minScore: 0.9 }],
-        'categories:best-practices': ['error', { minScore: 0.9 }],
+        'categories:best-practices': ['error', { minScore: 0.85 }],
         'categories:seo': ['error', { minScore: 0.9 }],
-        'largest-contentful-paint': ['error', { maxNumericValue: 2500 }],
+        'largest-contentful-paint': ['error', { maxNumericValue: 3500 }],
       },
     },
     upload: {

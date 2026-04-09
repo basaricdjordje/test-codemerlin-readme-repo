@@ -16,7 +16,8 @@
     "error": "Greška",
     "success": "Uspeh",
     "required": "Ovo polje je obavezno",
-    "search": "Pretraga"
+    "search": "Pretraga",
+    "dismiss": "Zatvori"
   },
   "form": {
     "title": "Kontakt formular",

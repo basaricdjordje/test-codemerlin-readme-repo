@@ -2,8 +2,8 @@
   position: absolute;
   top: -40px;
   left: 0;
-  background: #646cff;
-  color: white;
+  background: #312e81;
+  color: #ffffff;
   padding: 0.5rem 1rem;
   z-index: 100;
   transition: top 0.2s;
@@ -49,12 +49,18 @@
   color: #213547;
 }
 :root[data-theme="dark"] {
-  color: rgba(255, 255, 255, 0.87);
+  color: rgba(255, 255, 255, 0.92);
   background-color: #242424;
+}
+:root[data-theme="dark"] a {
+  color: #a5b4fc;
+}
+:root[data-theme="dark"] a:hover {
+  color: #c7d2fe;
 }
 :root[data-theme="dark"] button {
   background-color: #1a1a1a;
-  color: rgba(255, 255, 255, 0.87);
+  color: rgba(255, 255, 255, 0.92);
 }
 
 a {
@@ -114,17 +120,14 @@ button:focus-visible {
   }
 }
 
-:root[data-theme="light"] {
-  color: #213547;
-  background-color: #ffffff;
+/* After global `a` rules: skip link stays white on purple */
+html[data-theme='light'] a.skip-link,
+html[data-theme='dark'] a.skip-link {
+  color: #ffffff;
 }
-:root[data-theme="light"] a {
-  color: #4a4ed8;
-}
-:root[data-theme="light"] a:hover {
-  color: #3b3ebf;
-}
-:root[data-theme="light"] button {
-  background-color: #f9f9f9;
-  color: #213547;
+html[data-theme='light'] a.skip-link:hover,
+html[data-theme='light'] a.skip-link:focus,
+html[data-theme='dark'] a.skip-link:hover,
+html[data-theme='dark'] a.skip-link:focus {
+  color: #f5f5ff;
 }

@@ -1,13 +1,14 @@
 import { useState, useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useToast } from '../contexts/ToastContext'
 import './ContactForm.css'
 
 export function ContactForm() {
   const { t } = useTranslation()
+  const { showToast } = useToast()
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [errors, setErrors] = useState<{ name?: string; email?: string }>({})
-  const [feedback, setFeedback] = useState<'success' | 'error' | null>(null)
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false)
   const dialogRef = useRef<HTMLDivElement>(null)
 
@@ -61,19 +62,17 @@ export function ContactForm() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    setFeedback(null)
     if (!validate()) {
-      setFeedback('error')
+      showToast(`${t('common.error')}: ${t('common.required')}`, 'error')
       return
     }
-    setFeedback('success')
+    showToast(`${t('common.success')}: ${t('form.submitSuccess')}`, 'success')
   }
 
   const handleCancel = () => {
     setName('')
     setEmail('')
     setErrors({})
-    setFeedback(null)
     setShowDeleteConfirm(false)
   }
 
@@ -123,22 +122,13 @@ export function ContactForm() {
           <button
             type="button"
             className="delete-btn"
+            data-testid="contact-delete-open"
             onClick={() => setShowDeleteConfirm(true)}
           >
             {t('common.delete')}
           </button>
         </div>
       </form>
-      {feedback === 'success' && (
-        <div className="feedback success" role="status">
-          {t('common.success')}: {t('form.submitSuccess')}
-        </div>
-      )}
-      {feedback === 'error' && (
-        <div className="feedback error" role="alert">
-          {t('common.error')}: {t('common.required')}
-        </div>
-      )}
       {showDeleteConfirm && (
         <div
           className="delete-confirm-overlay"
