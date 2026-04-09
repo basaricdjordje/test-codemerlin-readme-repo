@@ -6,9 +6,7 @@
   border-radius: 8px;
   background: rgba(100, 108, 255, 0.05);
 }
-.html{
- display:block;
-}
+
 .contact-form-section h2 {
   margin-top: 0;
   margin-bottom: 1rem;
@@ -30,9 +28,27 @@
   padding: 0.5rem 0.75rem;
   border: 1px solid #333;
   border-radius: 4px;
-  background: #1a1a1a;
-  color: inherit;
   box-sizing: border-box;
+}
+
+:root[data-theme='dark'] .form-group input {
+  background: #1a1a1a;
+  color: rgba(255, 255, 255, 0.92);
+  border-color: #444;
+}
+
+:root[data-theme='dark'] .form-group input::placeholder {
+  color: #a3a3a3;
+}
+
+:root[data-theme='light'] .form-group input {
+  background: #ffffff;
+  color: #213547;
+  border-color: #64748b;
+}
+
+:root[data-theme='light'] .form-group input::placeholder {
+  color: #64748b;
 }
 
 .form-group input:focus {
@@ -68,7 +84,11 @@
 
 .form-actions button[type="button"] {
   background: transparent;
-  color: #646cff;
+  color: #4a4ed8;
+}
+
+:root[data-theme='dark'] .form-actions button[type="button"] {
+  color: #a5b4fc;
 }
 
 .delete-btn {
@@ -77,34 +97,76 @@
   color: #ff6b6b !important;
 }
 
-.feedback {
-  margin-top: 1rem;
-  padding: 0.75rem;
-  border-radius: 4px;
+:root[data-theme='light'] .delete-btn {
+  border-color: #b91c1c !important;
+  color: #b91c1c !important;
 }
 
-.feedback.success {
-  background: rgba(67, 179, 105, 0.2);
-  border: 1px solid #43b369;
-  color: #43b369;
-}
-
-.feedback.error {
-  background: rgba(255, 107, 107, 0.2);
-  border: 1px solid #ff6b6b;
-  color: #ff6b6b;
+.delete-confirm-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.5);
 }
 
 .delete-confirm-dialog {
-  margin-top: 1rem;
+  width: 100%;
+  max-width: 400px;
+  margin: 0;
   padding: 1rem;
   border: 1px solid #ff6b6b;
   border-radius: 8px;
-  background: rgba(255, 107, 107, 0.1);
+  background: rgba(36, 36, 36, 0.98);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+:root[data-theme='light'] .delete-confirm-dialog {
+  background: #ffffff;
+}
+
+.delete-dialog-heading {
+  margin: 0 0 0.5rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.delete-confirm-dialog p {
+  margin: 0 0 0.75rem;
 }
 
 .dialog-actions {
   display: flex;
   gap: 0.5rem;
   margin-top: 0.75rem;
+  flex-wrap: wrap;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 375px) {
+  .contact-form-section {
+    margin: 1rem auto;
+    padding: 1rem;
+  }
+  .form-actions {
+    flex-direction: column;
+  }
+  .form-actions button {
+    width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .contact-form-section {
+    max-width: 500px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .contact-form-section {
+    max-width: 600px;
+  }
 }

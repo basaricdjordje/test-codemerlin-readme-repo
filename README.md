@@ -66,9 +66,32 @@ The app uses **react-i18next** with **Serbian (sr)** as the fallback language. W
 
 A **language selector** in the header lets users switch between English and Serbian. The count button and footer use interpolated translations.
 
+## CI
+
+GitHub Actions (`.github/workflows/ci.yml`) runs ESLint, Vitest, production build, and Playwright E2E (**Chromium only**) on pushes and PRs to `main` (and `feature/**`). **Lighthouse CI** runs only on pushes to **`main`**, not on every feature branch push.
+
+### NFR pipeline (local)
+
+- **Playwright** — `npm run test:e2e` runs the suite on **Chromium only** (fast default). For Firefox, WebKit, Edge, and mobile viewports: `npm run test:e2e:full` (set `E2E_FULL_MATRIX=1`; install browsers with `npx playwright install` or `npx playwright install chromium` for the default).
+- **Lighthouse** — after `npm run build`: `npx lhci autorun --config=./lighthouserc.cjs`. Same thresholds as CI on `main`.
+
 ## Scripts
 
 - `npm run dev` – start development server
 - `npm run build` – build for production
-- `npm run test` – run tests
+- `npm run test` – run unit tests (Vitest)
+- `npm run test:e2e` – run end-to-end smoke tests (Playwright; starts dev server automatically)
+- `npm run test:e2e:ui` – Playwright UI mode
 - `npm run preview` – preview production build
+
+**E2E tests** live in `e2e/`. Default flow only needs Chromium: `npx playwright install chromium`. Full browser matrix: `npx playwright install` then `npm run test:e2e:full`.
+
+### Jira ticket helper
+
+1. Copy `.env.example` to `.env` and set `JIRA_EMAIL` and `JIRA_API_TOKEN`.
+2. Run `npm run jira:tickets` to create tickets in project `KAN` (or set `JIRA_PROJECT` in `.env`).
+3. `npm run jira:tickets:single` creates only the Playwright E2E ticket (`JIRA_SINGLE=1`).
+
+The file `.env` is gitignored; never commit API tokens.
+
+- `npm run jira:big-ticket` – creates **one** umbrella Jira task with **40+** acceptance criteria (same `.env`).
