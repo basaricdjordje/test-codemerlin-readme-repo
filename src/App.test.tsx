@@ -115,6 +115,21 @@ describe('App translations', () => {
     window.location.hash = ''
   })
 
+  it('logout clears profile data and shows confirmation message', async () => {
+    await i18n.changeLanguage('en')
+    localStorage.setItem('app-profile-name', 'Test User')
+    localStorage.setItem('app-profile-email', 'test@example.com')
+    render(
+      <I18nextProvider i18n={i18n}>
+        <App />
+      </I18nextProvider>
+    )
+    fireEvent.click(screen.getByRole('button', { name: /log out/i }))
+    expect(localStorage.getItem('app-profile-name')).toBeNull()
+    expect(localStorage.getItem('app-profile-email')).toBeNull()
+    expect(screen.getByText('You have been logged out.')).toBeInTheDocument()
+  })
+
   it('ContactForm shows validation error for empty required fields', async () => {
     await i18n.changeLanguage('en')
     render(

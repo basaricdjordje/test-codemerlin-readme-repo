@@ -6,9 +6,7 @@
   border-radius: 8px;
   background: rgba(100, 108, 255, 0.05);
 }
-.html{
- display:block;
-}
+
 .contact-form-section h2 {
   margin-top: 0;
   margin-bottom: 1rem;
@@ -95,16 +93,71 @@
   color: #ff6b6b;
 }
 
+.delete-confirm-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.5);
+}
+
 .delete-confirm-dialog {
-  margin-top: 1rem;
+  width: 100%;
+  max-width: 400px;
+  margin: 0;
   padding: 1rem;
   border: 1px solid #ff6b6b;
   border-radius: 8px;
-  background: rgba(255, 107, 107, 0.1);
+  background: rgba(36, 36, 36, 0.98);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+:root[data-theme='light'] .delete-confirm-dialog {
+  background: #ffffff;
+}
+
+.delete-dialog-heading {
+  margin: 0 0 0.5rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.delete-confirm-dialog p {
+  margin: 0 0 0.75rem;
 }
 
 .dialog-actions {
   display: flex;
   gap: 0.5rem;
   margin-top: 0.75rem;
+  flex-wrap: wrap;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 375px) {
+  .contact-form-section {
+    margin: 1rem auto;
+    padding: 1rem;
+  }
+  .form-actions {
+    flex-direction: column;
+  }
+  .form-actions button {
+    width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .contact-form-section {
+    max-width: 500px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .contact-form-section {
+    max-width: 600px;
+  }
 }

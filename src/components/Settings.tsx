@@ -8,7 +8,7 @@ export function Settings() {
 
   return (
     <section className="settings-page" aria-labelledby="settings-heading">
-      <h2 id="settings-heading">{t('settings.title')}</h2>
+      <h1 id="settings-heading">{t('settings.title')}</h1>
       <div className="settings-section">
         <h3 id="theme-label">{t('settings.theme')}</h3>
         <button
