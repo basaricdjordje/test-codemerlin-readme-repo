@@ -13,6 +13,11 @@
   top: 0;
 }
 
+.skip-link:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 2px;
+}
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -52,6 +57,16 @@ a {
 }
 a:hover {
   color: #535bf2;
+}
+a:focus-visible {
+  outline: 3px solid #646cff;
+  outline-offset: 2px;
+}
+
+input:focus-visible,
+select:focus-visible {
+  outline: 3px solid #646cff;
+  outline-offset: 2px;
 }
 
 body {

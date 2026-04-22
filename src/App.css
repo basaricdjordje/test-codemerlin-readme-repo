@@ -7,8 +7,12 @@
 .help-hint {
   margin-right: 1rem;
   font-size: 0.875rem;
-  color: #888;
+  color: #b3b3b3;
   cursor: help;
+}
+
+:root[data-theme='light'] .help-hint {
+  color: #595959;
 }
 
 .language-selector label {
@@ -56,7 +60,11 @@
 }
 
 .read-the-docs {
-  color: #888;
+  color: #b3b3b3;
+}
+
+:root[data-theme='light'] .read-the-docs {
+  color: #595959;
 }
 
 .welcome-message {
@@ -84,9 +92,13 @@
 }
 
 .search-no-results {
-  color: #888;
+  color: #b3b3b3;
   margin-top: 0.5rem;
   font-size: 0.875rem;
+}
+
+:root[data-theme='light'] .search-no-results {
+  color: #595959;
 }
 
 .back-to-top {
@@ -105,6 +117,11 @@
   margin-top: 2rem;
   padding-top: 1rem;
   border-top: 1px solid #333;
-  color: #888;
+  color: #b3b3b3;
   font-size: 0.875rem;
+}
+
+:root[data-theme='light'] .app-footer {
+  color: #595959;
+  border-top-color: #ccc;
 }
