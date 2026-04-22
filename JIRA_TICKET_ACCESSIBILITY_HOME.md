@@ -4,15 +4,15 @@
 **Accessibility: fix Home page axe E2E failures and minor a11y gaps**
 
 ## Description
-Playwright + axe E2E for Home is currently failing locally / in CI (see `test-results/a11y-Accessibility-home-*`). This ticket covers fixing all reported axe violations on the default Home view, aligning external links with tooling expectations, giving the primary navigation landmark an accessible name, and tightening keyboard, language, contrast, and structure checks listed below. Outcome: green a11y job and WCAG 2.1 AA alignment where the automated rules apply.
+Playwright + axe E2E for Home is currently failing locally / in CI (see `test-results/a11y-Accessibility-home-*`). This ticket covers addressing all reported axe violations on the default Home view, aligning external links with tooling expectations, giving the primary navigation landmark an accessible name, and tightening keyboard, language, contrast, and structure checks listed below. Outcome: a passing a11y job in CI and WCAG 2.1 AA alignment where the automated rules apply.
 
 **Parent / Epic (optional):** Umbrella AC / Phase 2 follow-up  
 **Type:** Bug / Task  
-**Priority:** High (blocks a11y pipeline)
+**Priority:** High (unblocks a11y pipeline)
 
 ## Acceptance Criteria
 
-1. **axe on Home:** The E2E target that runs axe on Home (e.g. `npm run test:e2e`) passes for that scenario in the Chromium project used in CI; no open axe violations on that page snapshot.
+1. **axe on Home:** The E2E target that runs axe on Home (e.g. `npm run test:e2e`) passes for that scenario in the Chromium project used in CI; no remaining axe violations on that page snapshot.
 
 2. **External links:** All `<a href="..." target="_blank">` that open external sites (e.g. Vite / React logo links in `App.tsx`) include `rel="noopener noreferrer"` (plus any extra attributes axe reports as required).
 
