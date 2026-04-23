@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+test-results
+
+# Local env (secrets)
+.env

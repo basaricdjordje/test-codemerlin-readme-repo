@@ -23,7 +23,8 @@
     "home": "Početna",
     "settings": "Podešavanja",
     "profile": "Profil",
-    "logout": "Odjava"
+    "logout": "Odjava",
+    "primaryNav": "Glavna navigacija"
   },
   "app": {
     "title": "Aplikacija",
@@ -32,7 +33,8 @@
     "language": "Jezik",
     "welcome": "Dobrodošli u aplikaciju",
     "countIs": "brojač je {{count}}",
-    "footer": "© 2025 Aplikacija",
+    "footer": "© 2026 Aplikacija",
+    "skipToMain": "Preskoči na glavni sadržaj",
     "version": "Verzija {{version}}",
     "loadingLanguage": "Učitavanje jezika...",
     "loadError": "Nije moguće učitati prevode. Prelazak na engleski.",
