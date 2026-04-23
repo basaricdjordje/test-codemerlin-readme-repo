@@ -8,7 +8,8 @@ Playwright + axe E2E for Home is currently failing locally / in CI (see `test-re
 
 **Parent / Epic (optional):** Umbrella AC / Phase 2 follow-up  
 **Type:** Bug / Task  
-**Priority:** High (unblocks a11y pipeline)
+**Priority:** High (unblocks a11y pipeline)  
+**Labels:** a11y, e2e, home
 
 ## Acceptance Criteria
 
