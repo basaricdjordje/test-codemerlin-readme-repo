@@ -28,7 +28,8 @@
     "home": "Home",
     "settings": "Settings",
     "profile": "Profile",
-    "logout": "Log out"
+    "logout": "Log out",
+    "primaryNav": "Primary navigation"
   },
   "app": {
     "title": "Application",
@@ -37,7 +38,8 @@
     "language": "Language",
     "welcome": "Welcome to the application",
     "countIs": "count is {{count}}",
-    "footer": "© 2025 Application",
+    "footer": "© 2026 Application",
+    "skipToMain": "Skip to main content",
     "version": "Version {{version}}",
     "loadingLanguage": "Loading language...",
     "loadError": "Failed to load translations. Falling back to English.",

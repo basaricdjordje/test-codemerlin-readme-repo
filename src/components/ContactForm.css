@@ -5,9 +5,12 @@
   border: 1px solid #646cff;
   border-radius: 8px;
   background: rgba(100, 108, 255, 0.05);
+  position: relative;
 }
-.html{
- display:block;
+
+.contact-form-section__main {
+  position: relative;
+  z-index: 0;
 }
 .contact-form-section h2 {
   margin-top: 0;
@@ -98,9 +101,12 @@
 .delete-confirm-dialog {
   margin-top: 1rem;
   padding: 1rem;
-  border: 1px solid #ff6b6b;
+  border: 2px solid #ff6b6b;
   border-radius: 8px;
-  background: rgba(255, 107, 107, 0.1);
+  background: rgba(255, 107, 107, 0.12);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+  position: relative;
+  z-index: 1;
 }
 
 .dialog-actions {

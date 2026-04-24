@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useEffect, useMemo, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
@@ -15,7 +15,8 @@ import './App.css'
 const SEARCH_DEBOUNCE_MS = 300
 
 function AppContent() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
+  const mainRef = useRef<HTMLElement>(null)
   const [count, setCount] = useState(0)
   const [searchQuery, setSearchQuery] = useState('')
   const debouncedQuery = useDebounce(searchQuery, SEARCH_DEBOUNCE_MS)
@@ -37,6 +38,15 @@ function AppContent() {
     window.addEventListener('hashchange', handler)
     return () => window.removeEventListener('hashchange', handler)
   }, [])
+
+  useEffect(() => {
+    const lng = i18n.resolvedLanguage ?? i18n.language
+    document.documentElement.lang = lng.startsWith('sr') ? 'sr' : 'en'
+  }, [i18n.language, i18n.resolvedLanguage])
+
+  const focusMain = () => {
+    mainRef.current?.focus()
+  }
 
   const sectionMatches = useMemo(() => {
     const title = t('app.title')
@@ -80,15 +90,25 @@ function AppContent() {
 
   return (
     <>
+      <a
+        href="#main-content"
+        className="skip-link"
+        onClick={(e) => {
+          e.preventDefault()
+          focusMain()
+        }}
+      >
+        {t('app.skipToMain')}
+      </a>
       <OfflineIndicator />
-      <main id="main-content" tabIndex={-1}>
+      <main ref={mainRef} id="main-content" tabIndex={-1}>
       <LanguageSelector />
       {(sectionMatches.header || !debouncedQuery.trim()) && (
         <div>
-          <a href="https://vite.dev" target="_blank">
+          <a href="https://vite.dev" target="_blank" rel="noopener noreferrer">
             <img src={viteLogo} className="logo" alt="Vite logo" />
           </a>
-          <a href="https://react.dev" target="_blank">
+          <a href="https://react.dev" target="_blank" rel="noopener noreferrer">
             <img src={reactLogo} className="logo react" alt="React logo" />
           </a>
         </div>
@@ -118,7 +138,7 @@ function AppContent() {
         </p>
       )}
       {(sectionMatches.nav || !debouncedQuery.trim()) && (
-        <nav>
+        <nav aria-label={t('navigation.primaryNav')}>
           <a href="#home">{t('navigation.home')}</a>
           <a href="#settings">{t('navigation.settings')}</a>
           <a href="#profile">{t('navigation.profile')}</a>
@@ -151,7 +171,16 @@ function AppContent() {
         </>
       )}
       </main>
-      <a href="#main-content" className="back-to-top">{t('app.backToTop')}</a>
+      <a
+        href="#main-content"
+        className="back-to-top"
+        onClick={(e) => {
+          e.preventDefault()
+          focusMain()
+        }}
+      >
+        {t('app.backToTop')}
+      </a>
       {(sectionMatches.footer || !debouncedQuery.trim()) && (
         <footer className="app-footer">
           {t('app.footer')} · {t('app.version', { version: '0.1.0' })}

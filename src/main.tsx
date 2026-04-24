@@ -5,9 +5,10 @@ import './index.css'
 import { ErrorBoundary } from './components/ErrorBoundary'
 import App from './App.tsx'
 
-const saved = localStorage.getItem('app-theme') as 'light' | 'dark' | null
-const theme = saved === 'light' || saved === 'dark' ? saved : (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark')
-document.documentElement.dataset.theme = theme
+const storedTheme = localStorage.getItem('app-theme') as 'light' | 'dark' | null
+const initialTheme: 'light' | 'dark' =
+  storedTheme === 'light' || storedTheme === 'dark' ? storedTheme : window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'
+document.documentElement.dataset.theme = initialTheme
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

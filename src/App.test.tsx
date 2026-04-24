@@ -23,7 +23,7 @@ describe('App translations', () => {
     expect(screen.getByText('Učitavanje...')).toBeInTheDocument()
     expect(screen.getByText('Dobrodošli u aplikaciju')).toBeInTheDocument()
     expect(screen.getByPlaceholderText('Pretraga')).toBeInTheDocument()
-    expect(screen.getByText(/© 2025 Aplikacija/)).toBeInTheDocument()
+    expect(screen.getByText(/© 2026 Aplikacija/)).toBeInTheDocument()
     expect(screen.getByText('Kontakt formular')).toBeInTheDocument()
   })
 
@@ -45,7 +45,7 @@ describe('App translations', () => {
     expect(screen.getByText('Loading...')).toBeInTheDocument()
     expect(screen.getByText('Welcome to the application')).toBeInTheDocument()
     expect(screen.getByPlaceholderText('Search')).toBeInTheDocument()
-    expect(screen.getByText(/© 2025 Application/)).toBeInTheDocument()
+    expect(screen.getByText(/© 2026 Application/)).toBeInTheDocument()
     expect(screen.getByText('Contact Form')).toBeInTheDocument()
   })
 
